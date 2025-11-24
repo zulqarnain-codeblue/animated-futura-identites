@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 1. Import Variants type
 
 // The "Stairway" transition effect
-const variants = {
+const variants: Variants = { // 2. Explicitly type the object
   initial: {
     height: "100vh",
   },
@@ -11,14 +11,14 @@ const variants = {
     height: "0vh",
     transition: {
       duration: 0.75,
-      delay: 0.05 * i, // Stagger effect
-      ease: [0.76, 0, 0.24, 1], // High-end easing
+      delay: 0.05 * i,
+      ease: [0.76, 0, 0.24, 1], // Now valid because TypeScript knows it's a variant
     },
   }),
 };
 
 // Subtle content fade-in to accompany the shutters
-const contentVariants = {
+const contentVariants: Variants = { // Good practice to type this one too
   initial: { opacity: 0, y: 20 },
   enter: { 
     opacity: 1, 

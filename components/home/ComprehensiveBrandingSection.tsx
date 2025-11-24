@@ -305,7 +305,7 @@ export default function ComprehensiveBrandingSection() {
                               <div className="flex flex-col items-start gap-2 relative z-10">
                                 {/* Number Circle */}
                                 <motion.div
-                                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-semibold transition-all border ${
+                                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-semibold transition-all border relative ${
                                     activeService === actualIndex
                                       ? "bg-theme-500 text-white border-theme-500"
                                       : "bg-white border-gray-400 text-gray-400"
@@ -485,7 +485,7 @@ export default function ComprehensiveBrandingSection() {
                     <NotchButton
                       href="/contact"
                       label="Explore More"
-                      className="self-end bg-theme px-5 xl:text-[20px]"
+                      className="self-end bg-theme px-5 2xl:text-[20px] ml-auto max-w-fit"
                       circleClassName="w-[120px] lg:w-[120px] xl:w-[130px] h-[120px] lg:h-[120px] xl:h-[130px]"
                     />
                   </motion.div>
