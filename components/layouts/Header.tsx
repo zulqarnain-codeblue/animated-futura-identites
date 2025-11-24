@@ -25,7 +25,7 @@ const MENU_ITEMS = [
 const CONTACT_INFO = { phone: "+12153333337", email: "sales@futurasigns.com" } as const;
 
 // Smooth easing
-const ease = [0.76, 0, 0.24, 1];
+const ease = [0.76, 0, 0.24, 1] as const; 
 
 // Cursor follower for menu
 const Cursor: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
@@ -457,18 +457,6 @@ const Header: React.FC = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
             >
               <BackgroundShapes />
-
-              {/* Header in menu */}
-              {/* <div className="absolute top-0 left-0 right-0 px-6 py-5">
-                <div className="max-w-[1450px] mx-auto flex justify-between items-center">
-                  <RevealMask delay={0.3}>
-                    <span className="text-white/40 text-sm tracking-[0.2em] uppercase">Navigation</span>
-                  </RevealMask>
-                  <RevealMask delay={0.35}>
-                    <span className="text-white/40 text-sm tracking-[0.2em] uppercase">Menu</span>
-                  </RevealMask>
-                </div>
-              </div> */}
 
               {/* Navigation */}
               <div className="h-full flex items-center px-8 lg:px-16 pt-20 pb-32">
