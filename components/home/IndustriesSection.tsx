@@ -7,30 +7,30 @@ import { H2, SubHeading } from "../ui/Typography";
 import { motion, useScroll, useTransform, Variants, useInView } from "framer-motion";
 
 const industries = [
-  { id: 1, name: "Healthcare", icon: "/icons/healthcare.png", color: "gray" },
+  { id: 1, name: "Healthcare", icon: "/icons/healthcare.webp", color: "gray" },
   {
     id: 2,
     name: "Manufacturing Facilities",
-    icon: "/icons/manufacturing_facilities.png",
+    icon: "/icons/manufacturing_facilities.webp",
     color: "orange",
   },
   {
     id: 3,
     name: "Stadium and Casinos",
-    icon: "/icons/custom-iconic-signage.png",
+    icon: "/icons/custom-iconic-signage.webp",
     color: "gray",
   },
   {
     id: 4,
     name: "Corporate Identity",
-    icon: "/icons/corporte-identity.png",
+    icon: "/icons/corporte-identity.webp",
     color: "gray",
   },
-  { id: 5, name: "Education", icon: "/icons/education.png", color: "blue" },
+  { id: 5, name: "Education", icon: "/icons/education.webp", color: "blue" },
   {
     id: 6,
     name: "QRS Solution",
-    icon: "/icons/restaurants.png",
+    icon: "/icons/restaurants.webp",
     color: "gray",
   },
 ];
@@ -100,7 +100,7 @@ export default function IndustriesSection() {
         style={{
           y: yBg,
           backgroundImage:
-            "url('/images/57d39b3833772ab5377a7a1cbbb904758e469cea.jpg')",
+            "url('/images/57d39b3833772ab5377a7a1cbbb904758e469cea.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

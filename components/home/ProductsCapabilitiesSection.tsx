@@ -23,8 +23,8 @@ interface Product {
 }
 
 const products: Product[] = [
-  { id: 1, title: "Exterior Signage", image: "/images/Mask group 5.png" },
-  { id: 2, title: "ADA Signs", image: "/images/Mask group 6.png" },
+  { id: 1, title: "Exterior Signage", image: "/images/Mask group 5.webp" },
+  { id: 2, title: "ADA Signs", image: "/images/Mask group 6.webp" },
   {
     id: 3,
     title: "Lighting Solutions",

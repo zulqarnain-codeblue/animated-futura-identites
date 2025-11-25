@@ -16,6 +16,7 @@ import {
   useMotionValue,
   AnimatePresence,
 } from "framer-motion";
+import HLSVideoPlayer from "../HLSVideoPlayer";
 
 // FIX 1: "as const" fixes the red line on 'ease' by making it a readonly tuple
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -89,7 +90,11 @@ const AnimatedLetters: React.FC<{
           key={i}
           className="inline-block"
           initial={{ y: "100%", opacity: 0, rotateX: -90 }}
-          animate={shouldAnimate ? { y: 0, opacity: 1, rotateX: 0 } : { y: "100%", opacity: 0, rotateX: -90 }}
+          animate={
+            shouldAnimate
+              ? { y: 0, opacity: 1, rotateX: 0 }
+              : { y: "100%", opacity: 0, rotateX: -90 }
+          }
           transition={{
             duration: 0.8,
             ease,
@@ -137,7 +142,7 @@ const GlowingOrb: React.FC = () => {
   useEffect(() => {
     // Only start tracking after mount
     if (typeof window === "undefined") return;
-    
+
     const handleMouse = (e: MouseEvent) => {
       mouseX.set(e.clientX - 400);
       mouseY.set(e.clientY - 400);
@@ -185,10 +190,10 @@ const Particles: React.FC = () => (
   </div>
 );
 
-const VideoReveal: React.FC<{ children: React.ReactNode; shouldAnimate: boolean }> = ({ 
-  children, 
-  shouldAnimate 
-}) => {
+const VideoReveal: React.FC<{
+  children: React.ReactNode;
+  shouldAnimate: boolean;
+}> = ({ children, shouldAnimate }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -201,7 +206,11 @@ const VideoReveal: React.FC<{ children: React.ReactNode; shouldAnimate: boolean 
       ref={ref}
       className="relative overflow-hidden"
       initial={{ clipPath: "inset(100% 0 0 0)" }}
-      animate={shouldAnimate ? { clipPath: "inset(0% 0 0 0)" } : { clipPath: "inset(100% 0 0 0)" }}
+      animate={
+        shouldAnimate
+          ? { clipPath: "inset(0% 0 0 0)" }
+          : { clipPath: "inset(100% 0 0 0)" }
+      }
       transition={{ duration: 1.4, ease, delay: 0.5 }}
     >
       <motion.div style={{ y }}>{children}</motion.div>
@@ -224,7 +233,11 @@ interface AnimatedCTAProps {
   shouldAnimate: boolean;
 }
 
-const AnimatedCTA: React.FC<AnimatedCTAProps> = ({ href, children, shouldAnimate }) => {
+const AnimatedCTA: React.FC<AnimatedCTAProps> = ({
+  href,
+  children,
+  shouldAnimate,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -296,15 +309,16 @@ const AnimatedCTA: React.FC<AnimatedCTAProps> = ({ href, children, shouldAnimate
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef(null);
-  
+
   // FIX 3: Animation State Control
   const [startAnimation, setStartAnimation] = useState(false);
+  const [timerAnimation, setTimerAnimation] = useState(1500);
 
   useEffect(() => {
     // Wait for the Preloader to finish (2.4 seconds matches the preloader logic)
     const timer = setTimeout(() => {
       setStartAnimation(true);
-    }, 2400);
+    }, timerAnimation);
 
     return () => clearTimeout(timer);
   }, []);
@@ -321,10 +335,10 @@ const HeroSection: React.FC = () => {
   return (
     <Section
       fullWidth={true}
-      style={{
-        background:
-          "radial-gradient(circle at 50% 50%, rgba(81, 46, 9, 1) 0%, rgba(0, 0, 0, 1) 50%)",
-      }}
+      // style={{
+      //   background:
+      //     "radial-gradient(circle at 50% 50%, rgba(81, 46, 9, 1) 0%, rgba(0, 0, 0, 1) 50%)",
+      // }}
       className="overflow-hidden sm:pt-10 md:pt-30 lg:pt-40 relative min-h-screen"
     >
       <motion.div
@@ -341,7 +355,7 @@ const HeroSection: React.FC = () => {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%]"
             style={{
               background:
-                "radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 50%)",
+                "radial-gradient(circle at 50% 50%, rgba(81, 46, 9, 1) 0%, rgba(0, 0, 0, 1) 50%)",
             }}
             animate={{
               scale: [1, 1.2, 1],
@@ -380,17 +394,23 @@ const HeroSection: React.FC = () => {
                   animate={startAnimation ? { x: "0%" } : { x: "-100%" }}
                   transition={{ duration: 0.8, ease, delay: 0.5 }}
                 />
-                <AnimatedLetters
-                  text="Futura Identities"
-                  delay={0.3}
-                  stagger={0.04}
-                  shouldAnimate={startAnimation}
-                />
+                <span className="overflow-hidden inline-block">
+                  <AnimatedLetters
+                    text="Futura Identities"
+                    delay={0.3}
+                    stagger={0.04}
+                    shouldAnimate={startAnimation}
+                  />
+                </span>
               </motion.small>
 
               {/* Main heading with staggered reveal */}
               <H1 className="overflow-hidden">
-                <RevealText shouldAnimate={startAnimation} delay={0.4} className="pl-2">
+                <RevealText
+                  shouldAnimate={startAnimation}
+                  delay={0.4}
+                  className="pl-2"
+                >
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
@@ -409,14 +429,22 @@ const HeroSection: React.FC = () => {
                   <motion.span
                     className="inline-block"
                     initial={{ x: "-100%", opacity: 0 }}
-                    animate={startAnimation ? { x: 0, opacity: 1 } : { x: "-100%", opacity: 0 }}
+                    animate={
+                      startAnimation
+                        ? { x: 0, opacity: 1 }
+                        : { x: "-100%", opacity: 0 }
+                    }
                     transition={{ duration: 0.6, ease, delay: 0.9 }}
                   >
                     Experiences
                   </motion.span>
                 </motion.span>
 
-                <RevealText shouldAnimate={startAnimation} delay={0.8} className="pl-2">
+                <RevealText
+                  shouldAnimate={startAnimation}
+                  delay={0.8}
+                  className="pl-2"
+                >
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
@@ -430,7 +458,9 @@ const HeroSection: React.FC = () => {
               {/* Paragraph with fade up */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
-                animate={startAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                animate={
+                  startAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                }
                 transition={{ duration: 0.8, ease, delay: 1 }}
               >
                 <Paragraph className="max-w-md pl-6 text-white">
@@ -455,7 +485,9 @@ const HeroSection: React.FC = () => {
           <motion.div
             className="flex-1 max-h-[90vh] self-center xl:self-auto"
             initial={{ opacity: 0, x: 100 }}
-            animate={startAnimation ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+            animate={
+              startAnimation ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }
+            }
             transition={{ duration: 1, ease, delay: 0.3 }}
           >
             <VideoReveal shouldAnimate={startAnimation}>
@@ -467,23 +499,11 @@ const HeroSection: React.FC = () => {
                 {/* Video glow effect */}
                 <motion.div className="absolute -inset-4 bg-theme/20 blur-2xl rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <video
+                <HLSVideoPlayer
+                  src="/videos/home-hero.m3u8"
+                  poster="/images/home-hero.webp"
                   className="w-full h-auto relative z-10"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster="/images/home-hero.png"
-                >
-                  <source src="/videos/home-hero.mp4" type="video/mp4" />
-                  <Image
-                    src="/images/home-hero.png"
-                    className="w-full"
-                    alt="Hero Video Thumbnail Image"
-                    width={1260}
-                    height={896}
-                  />
-                </video>
+                />
 
                 {/* Play indicator */}
                 <motion.div

@@ -12,8 +12,8 @@ export const productList: ProductContent[] = [
     slug: "qrs-solution",
     description:
       "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam.",
-    mainImageUrl: "/images/Rounded Rectangle 1.png",
-    smallImageUrl: "/images/Rectangle 5.png",
+    mainImageUrl: "/images/Rounded Rectangle 1.webp",
+    smallImageUrl: "/images/Rectangle 5.webp",
     layout: "left",
     tag: "QRS Solution",
 
@@ -21,27 +21,27 @@ export const productList: ProductContent[] = [
       {
         id: 1,
         title: "Building Signs",
-        image: "/images/a907732626320d9ac42d7d07ed89216ce3aea48b.png",
+        image: "/images/a907732626320d9ac42d7d07ed89216ce3aea48b.webp",
       },
       {
         id: 2,
         title: "Drive Thru",
-        image: "/images/f362803c1aac0d9dda74e21996d1bf2773390902.png",
+        image: "/images/f362803c1aac0d9dda74e21996d1bf2773390902.webp",
       },
       {
         id: 3,
         title: "Free Standing",
-        image: "/images/cc94f3892c3fb80aa4a2d2375eb2d5de98edd1d8.png",
+        image: "/images/cc94f3892c3fb80aa4a2d2375eb2d5de98edd1d8.webp",
       },
       {
         id: 4,
         title: "Architectural Lightning",
-        image: "/images/306cacef62ea9b44e7011709ac3d7a206e401837.png",
+        image: "/images/306cacef62ea9b44e7011709ac3d7a206e401837.webp",
       },
       {
         id: 5,
         title: "Architectural Canopies",
-        image: "/images/09cd608ba9a501034bc8720f976458d9f7a135bd.jpg",
+        image: "/images/09cd608ba9a501034bc8720f976458d9f7a135bd.webp",
       },
       {
         id: 6,
@@ -66,8 +66,8 @@ export const productList: ProductContent[] = [
     slug: "exterior-signage",
     description:
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.",
-    mainImageUrl: "/images/Rectangle 8.png",
-    smallImageUrl: "/images/Rectangle 9.png",
+    mainImageUrl: "/images/Rectangle 8.webp",
+    smallImageUrl: "/images/Rectangle 9.webp",
     layout: "right",
     tag: "Exterior Signage",
 
@@ -100,8 +100,8 @@ export const productList: ProductContent[] = [
     slug: "interior-signage",
     description:
       "Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-    mainImageUrl: "/images/Rectangle 77.png",
-    smallImageUrl: "/images/Rectangle 20.png",
+    mainImageUrl: "/images/Rectangle 77.webp",
+    smallImageUrl: "/images/Rectangle 20.webp",
     layout: "left",
     tag: "Interior Signage",
 
@@ -134,8 +134,8 @@ export const productList: ProductContent[] = [
     slug: "architectural-elements",
     description:
       "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
-    mainImageUrl: "/images/Rectangle 17.png",
-    smallImageUrl: "/images/Rectangle 18.png",
+    mainImageUrl: "/images/Rectangle 17.webp",
+    smallImageUrl: "/images/Rectangle 18.webp",
     layout: "right",
     tag: "Architectural Elements",
 
@@ -168,8 +168,8 @@ export const productList: ProductContent[] = [
     slug: "ada-solution",
     description:
       "ADA compliant signage designed with high accessibility standards.",
-    mainImageUrl: "/images/Rectangle 23.png",
-    smallImageUrl: "/images/Rectangle 24.png",
+    mainImageUrl: "/images/Rectangle 23.webp",
+    smallImageUrl: "/images/Rectangle 24.webp",
     layout: "left",
     tag: "ADA Solution",
 
@@ -202,8 +202,8 @@ export const productList: ProductContent[] = [
     slug: "lighting-solutions",
     description:
       "Advanced lighting solutions designed for both indoor and outdoor displays.",
-    mainImageUrl: "/images/Rectangle 27.png",
-    smallImageUrl: "/images/Rectangle 28.png",
+    mainImageUrl: "/images/Rectangle 27.webp",
+    smallImageUrl: "/images/Rectangle 28.webp",
     layout: "right",
     tag: "Lighting Solutions",
 
@@ -236,8 +236,8 @@ export const productList: ProductContent[] = [
     slug: "wayfinding-signs",
     description:
       "Directional and navigation signage crafted for clarity and consistency.",
-    mainImageUrl: "/images/Rectangle 35.png",
-    smallImageUrl: "/images/Rectangle 36.png",
+    mainImageUrl: "/images/Rectangle 35.webp",
+    smallImageUrl: "/images/Rectangle 36.webp",
     layout: "left",
     tag: "Wayfinding Signs",
 

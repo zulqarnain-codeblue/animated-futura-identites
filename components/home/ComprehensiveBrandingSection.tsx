@@ -22,7 +22,7 @@ const services = [
     title: "Project Management",
     description:
       "Maintain nationwide consistency through a frictionless experience with transparent communication.",
-    image: "images/Mask group 2.png",
+    image: "images/Mask group 2.webp",
     subtitle: "9 Years Partnerships",
     subtitleDesc:
       "It is a long established fact that a reader will be distracted by the readable.",
@@ -498,7 +498,7 @@ export default function ComprehensiveBrandingSection() {
                   whileHover={{ scale: 1.02 }}
                 >
                   <Image
-                    src="/images/Mask group 3.png"
+                    src="/images/Mask group 3.webp"
                     width={360}
                     height={265}
                     alt=""

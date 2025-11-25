@@ -34,7 +34,10 @@ const Magnetic: React.FC<{ children: React.ReactNode; strength?: number }> = ({
     y.set((e.clientY - rect.top - rect.height / 2) * strength);
   };
 
-  const reset = () => { x.set(0); y.set(0); };
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <motion.div
@@ -104,16 +107,24 @@ const ImageReveal: React.FC<{
   const isInView = useInView(triggerRef, { once: true, amount: 0.1 });
 
   return (
-    <div ref={triggerRef} className="relative overflow-hidden w-full h-full block">
+    <div
+      ref={triggerRef}
+      className="relative overflow-hidden w-full h-full block"
+    >
       <motion.div
         initial={{
-          clipPath: direction === "left"
-            ? "inset(0% 100% 0% 0%)"
-            : "inset(0% 0% 0% 100%)"
+          clipPath:
+            direction === "left"
+              ? "inset(0% 100% 0% 0%)"
+              : "inset(0% 0% 0% 100%)",
         }}
-        animate={isInView ? {
-          clipPath: "inset(0% 0% 0% 0%)"
-        } : {}}
+        animate={
+          isInView
+            ? {
+                clipPath: "inset(0% 0% 0% 0%)",
+              }
+            : {}
+        }
         transition={{ duration: 1.2, ease, delay }}
         className="relative w-full h-full"
       >
@@ -138,7 +149,11 @@ const AboutSection: React.FC = () => {
   });
 
   const circleY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const circleScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1.05]);
+  const circleScale = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0.9, 1, 1.05]
+  );
 
   return (
     <Section fullWidth={true}>
@@ -158,45 +173,46 @@ const AboutSection: React.FC = () => {
 
         <div className="relative z-10">
           <div className="flex flex-col xl:flex-row items-start lg:items-start gap-14 xl:gap-0">
-            
             {/* --- LEFT IMAGE SECTION --- */}
             {/* Removed outer motion.div entirely to prevent conflict */}
             <div className="relative group flex flex-col max-w-[250px] sm:max-w-[400px] lg:max-w-[500px] lg:flex-[0_0_300px] xl:flex-[0_0_450px] 2xl:flex-[0_0_490px] order-2 xl:order-1">
-              
               {/* Image Container */}
               <div className="w-full">
                 <ImageReveal delay={0.2} direction="left">
-                   {/* We wrap Image in a div to ensure it behaves block-level for the scale animation */}
-                   <div className="relative w-full h-full">
-                      <Image
-                        src="/images/Mask group.png"
-                        alt="Whitlock Mills Building Sign"
-                        width={595} // Removed decimals, standard integers are safer
-                        height={660}
-                        className="w-full h-auto max-h-[300px] sm:max-h-[350px] md:max-h-none object-center object-cover"
-                        priority // Added priority to ensure it loads fast
-                      />
-                   </div>
+                  {/* We wrap Image in a div to ensure it behaves block-level for the scale animation */}
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Mask group.webp"
+                      alt="Whitlock Mills Building Sign"
+                      width={595} // Removed decimals, standard integers are safer
+                      height={660}
+                      className="w-full h-auto max-h-[300px] sm:max-h-[350px] md:max-h-none object-center object-cover"
+                      priority // Added priority to ensure it loads fast
+                    />
+                  </div>
                 </ImageReveal>
               </div>
 
               {/* CTA Button */}
-              <FadeUp delay={0.5} className="z-20 flex justify-end relative pointer-events-none">
+              <FadeUp
+                delay={0.5}
+                className="z-20 flex justify-end relative pointer-events-none"
+              >
                 {/* Pointer events set to auto on the button wrapper itself */}
                 <div className="pointer-events-auto">
-                    <Magnetic strength={0.15}>
+                  <Magnetic strength={0.15}>
                     <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                        <NotchButton
+                      <NotchButton
                         href="/about"
                         label="LEARN MORE ABOUT US"
                         className="bg-theme -right-1/4 sm:-right-1/6 xl:-right-1/3 xl:px-[43.5px] xl:py-[23.5px]"
                         circleClassName="w-[120px] lg:w-[170px] xl:w-[200px] h-[120px] lg:h-[170px] xl:h-[200px]"
-                        />
+                      />
                     </motion.div>
-                    </Magnetic>
+                  </Magnetic>
                 </div>
               </FadeUp>
             </div>
@@ -212,8 +228,8 @@ const AboutSection: React.FC = () => {
                 </RevealText>
                 <FadeUp delay={0.3}>
                   <Paragraph className="max-w-[350px] sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-lg 2xl:max-w-xl ml-auto pr-10 lg:pr-14 xl:pr-24 mt-6 lg:mt-6 xl:mt-10 2xl:mt-14 2xl:text-[22px]">
-                    At Futura Identities, our talent is our people. With a team of
-                    75 skilled professionals working from our 50,000 sq. ft.
+                    At Futura Identities, our talent is our people. With a team
+                    of 75 skilled professionals working from our 50,000 sq. ft.
                     facility in Mount Holly, NJ, we bring creativity, precision,
                     and expertise to every project. Our continuous investment in
                     advanced manufacturing capabilities allows us to explore new
@@ -226,20 +242,19 @@ const AboutSection: React.FC = () => {
             {/* --- RIGHT IMAGE SECTION --- */}
             <div className="mt-5 md:mt-10 xl:mt-70 flex justify-end max-w-[220px] sm:max-w-[300px] lg:flex-[0_0_200px] xl:flex-[0_0_280px] 2xl:flex-[0_0_330px] order-3 self-end">
               <div className="relative w-full group">
-                 <ImageReveal delay={0.3} direction="right">
-                    <div className="relative w-full h-full">
-                        <Image
-                            src="/images/Mask group 1.png"
-                            alt="Person working at Futura Identities"
-                            className="w-full h-auto max-h-[200px] sm:max-h-[300px] md:max-h-none object-center object-cover"
-                            width={437}
-                            height={618}
-                        />
-                    </div>
-                 </ImageReveal>
+                <ImageReveal delay={0.3} direction="right">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/Mask group 1.webp"
+                      alt="Person working at Futura Identities"
+                      className="w-full h-auto max-h-[200px] sm:max-h-[300px] md:max-h-none object-center object-cover"
+                      width={437}
+                      height={618}
+                    />
+                  </div>
+                </ImageReveal>
               </div>
             </div>
-
           </div>
         </div>
       </div>

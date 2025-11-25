@@ -31,7 +31,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative">
       {/* The 5 Columns (Shutters) */}
-      <div className="fixed inset-0 flex pointer-events-none z-[50]">
+      {/* <div className="fixed inset-0 flex pointer-events-none z-[50]">
         {[...Array(5)].map((_, index) => (
           <motion.div
             key={index}
@@ -42,16 +42,16 @@ export default function Template({ children }: { children: React.ReactNode }) {
             className="w-full bg-[#141516] border-r border-white/5 last:border-r-0 relative"
           />
         ))}
-      </div>
+      </div> */}
 
       {/* The Page Content */}
-      <motion.main
+      {/* <motion.main
         variants={contentVariants}
         initial="initial"
         animate="enter"
       >
+      </motion.main> */}
         {children}
-      </motion.main>
     </div>
   );
 }

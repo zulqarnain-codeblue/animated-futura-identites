@@ -377,7 +377,7 @@ const Header: React.FC = () => {
               <Magnetic strength={0.2}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Image
-                    src={showWhiteLogo ? "/logos/logo.svg" : "/logos/black-logo.png"}
+                    src={showWhiteLogo ? "/logos/logo.svg" : "/logos/black-logo.webp"}
                     alt="Logo"
                     width={150}
                     height={150}

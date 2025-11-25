@@ -5,6 +5,8 @@ interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  props?: any;
+  ref?: any;
 }
 
 /* Headings */
@@ -36,7 +38,10 @@ export function H2({
 }: TypographyProps) {
   return (
     <h2
-      className={cn("text-2xl sm:text-3xl md:text-4xl lg:text-[45px] xl:text-[55px] 2xl:text-[68px] font-bold text-black", className)}
+      className={cn(
+        "text-2xl sm:text-3xl md:text-4xl lg:text-[45px] xl:text-[55px] 2xl:text-[68px] font-bold text-black",
+        className
+      )}
       style={style}
       {...props}
     >
@@ -53,7 +58,10 @@ export function H3({
 }: TypographyProps) {
   return (
     <h3
-      className={cn("text-[18px] md:text-[20px] lg:text-[23px] xl:text-[30px] leading-none", className)}
+      className={cn(
+        "text-[18px] md:text-[20px] lg:text-[23px] xl:text-[30px] leading-none",
+        className
+      )}
       style={style}
       {...props}
     >
@@ -143,7 +151,10 @@ export function Paragraph({
 }: TypographyProps) {
   return (
     <p
-      className={cn("text-black text-[16px] sm:text-lg leading-tight", className)}
+      className={cn(
+        "text-black text-[16px] sm:text-lg leading-tight",
+        className
+      )}
       style={style}
       {...props}
     >
@@ -161,7 +172,10 @@ export function SubParagraph({
 }: TypographyProps) {
   return (
     <p
-      className={cn("text-black text-[16px] xl:text-[17px] leading-tight", className)}
+      className={cn(
+        "text-black text-[16px] xl:text-[17px] leading-tight",
+        className
+      )}
       style={style}
       {...props}
     >

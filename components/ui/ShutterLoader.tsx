@@ -28,7 +28,7 @@ export default function ShutterLoader() {
           {columns.map((_, i) => (
             <Column key={i} index={i} total={columns.length} />
           ))}
-          
+
           {/* Central Logo/Text Overlay - Fades out before shutters open */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -37,7 +37,7 @@ export default function ShutterLoader() {
             className="absolute inset-0 flex items-center justify-center z-50"
           >
             <h1 className="text-white text-4xl font-bold tracking-[0.2em] uppercase">
-              Futura
+              Futura <br /> Identities
             </h1>
           </motion.div>
         </div>
@@ -55,7 +55,7 @@ function Column({ index, total }: { index: number; total: number }) {
         transition: {
           duration: 0.8,
           // Calculate stagger based on index
-          delay: 0.05 * index, 
+          delay: 0.05 * index,
           ease: [0.76, 0, 0.24, 1],
         },
       }}
