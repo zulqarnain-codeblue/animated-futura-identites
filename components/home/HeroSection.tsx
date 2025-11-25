@@ -339,7 +339,7 @@ const HeroSection: React.FC = () => {
       //   background:
       //     "radial-gradient(circle at 50% 50%, rgba(81, 46, 9, 1) 0%, rgba(0, 0, 0, 1) 50%)",
       // }}
-      className="overflow-hidden sm:pt-10 md:pt-30 lg:pt-40 relative min-h-screen"
+      className="overflow-hidden sm:pt-10 md:pt-30 lg:pt-40"
     >
       <motion.div
         ref={sectionRef}
@@ -370,7 +370,7 @@ const HeroSection: React.FC = () => {
 
         <div className="bg-black sm:bg-transparent container max-w-full text-white pt-40 sm:py-34 md:py-0 flex flex-col md:flex-row md:items-end gap:4 md:gap-10 xl:gap-4 relative z-10">
           {/* Left Content */}
-          <div className="pl-10 sm:pl-10 md:pl-10 lg:pl-12 xl:pl-0 max-w-lg xl:max-w-md flex flex-col items-start gap-y-3 relative z-10 flex-1 xl:flex-0 ml-3 md:ml-8 lg:ml-16 xl:ml-30">
+          <div className="pl-10 sm:pl-10 md:pl-10 lg:pl-12 xl:pl-0 max-w-lg xl:max-w-md flex flex-col items-start gap-y-3 relative z-10 flex-1 xl:flex-0 ml-3 md:ml-8 lg:ml-16 xl:ml-30 pb-10">
             <div className="flex flex-col items-start gap-y-0 pl-6 relative">
               {/* Animated vertical line */}
               <AnimatedLine
