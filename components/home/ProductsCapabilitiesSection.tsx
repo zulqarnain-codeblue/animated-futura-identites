@@ -28,19 +28,22 @@ const products: Product[] = [
     id: 1,
     title: "QRS Solution",
     slug: "qrs-solution",
-    image: "/images/Rounded Rectangle 1.webp",
+    image:
+      "/images/f61b0227453c53ed152b8c5d4c29998b8cfa4814_cropped_1_550x461_1.webp",
   },
   {
     id: 2,
     title: "Exterior Signage",
     slug: "exterior-signage",
-    image: "/images/Rectangle 8.webp",
+    image:
+      "/images/009a76d8bad95e47486d52bbe7075d26a1ef30ac_cropped_1_550x461_1.webp",
   },
   {
     id: 3,
     title: "Interior Signage",
     slug: "interior-signage",
-    image: "/images/Rectangle 77.webp",
+    image:
+      "/images/c6af0879ac84303217f05403e5fe09d06520440b_cropped_1_550x461_1.webp",
   },
   {
     id: 4,
@@ -249,6 +252,7 @@ export default function ProductsCapabilitiesSection() {
                     <Link
                       href={`/products-capabilities/${item.slug}`}
                       className="relative z-20"
+                      aria-label="Link to Product Page"
                     >
                       <motion.div
                         className="w-8 sm:w-12 h-8 sm:h-12 flex items-center justify-center rounded-full shadow-lg"
@@ -271,16 +275,17 @@ export default function ProductsCapabilitiesSection() {
             onClick={prevSlide}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="w-12 h-12 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition cursor-pointer"
+            className="w-12 h-12 flex items-center justify-center bg-theme-100 text-gray-700 rounded-full hover:bg-gray-200 transition cursor-pointer"
+            aria-label="Previous Slide Button"
           >
             <IoMdArrowBack className="text-xl" />
           </motion.button>
 
           {/* Pagination Line */}
-          <div className="flex items-center gap-4 flex-1 mx-6">
-            <div className="w-full h-0.5 bg-gray-200 relative overflow-hidden rounded-full">
+          <div className="flex items-center gap-4 flex-1">
+            <div className="w-full h-0.5 bg-theme-500 bg-gray-200 relative overflow-hidden rounded-full">
               <motion.div
-                className="absolute top-0 left-0 h-full bg-theme-500"
+                className="absolute top-0 left-0 h-full bg-gray-200"
                 // Calculate width percentage: (current index + 1) / total items
                 initial={{ width: "0%" }}
                 animate={{ width: `${((index + 1) / products.length) * 100}%` }}
@@ -297,6 +302,16 @@ export default function ProductsCapabilitiesSection() {
                 / {String(products.length).padStart(2, "0")}
               </span>
             </span>
+
+            <div className="w-full h-0.5 bg-gray-200 relative overflow-hidden rounded-full">
+              <motion.div
+                className="absolute top-0 left-0 h-full bg-theme-500"
+                // Calculate width percentage: (current index + 1) / total items
+                initial={{ width: "0%" }}
+                animate={{ width: `${((index + 1) / products.length) * 100}%` }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              />
+            </div>
           </div>
 
           {/* Next Button */}
@@ -305,6 +320,7 @@ export default function ProductsCapabilitiesSection() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             className="w-12 h-12 flex items-center justify-center bg-theme-500 text-white rounded-full hover:bg-theme-600 transition cursor-pointer shadow-lg shadow-theme-500/30"
+            aria-label="Next Slide Button"
           >
             <IoMdArrowForward className="text-xl" />
           </motion.button>

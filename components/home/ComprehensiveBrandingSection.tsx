@@ -376,6 +376,7 @@ export default function ComprehensiveBrandingSection() {
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, ease, delay: index * 0.1 }}
                     whileHover={{ x: 8 }}
+                    aria-label="Service Change Button"
                   >
                     {/* Vertical Line (Timeline Element) */}
                     {index < services.length - 1 && (

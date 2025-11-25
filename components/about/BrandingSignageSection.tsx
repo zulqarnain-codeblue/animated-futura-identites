@@ -312,6 +312,7 @@ export default function BrandingSignageSection() {
                       className="bg-theme hover:bg-theme-600 transition-colors text-white font-semibold py-4 px-5 flex flex-col items-start justify-center gap-3 relative overflow-hidden group"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      aria-label="Watch Futura Identities"
                     >
                       {/* Hover overlay effect */}
                       <motion.div

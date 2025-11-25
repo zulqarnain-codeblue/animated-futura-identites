@@ -155,6 +155,7 @@ const AnimatedCTA: React.FC<{
         <Link
           href={href}
           className="uppercase px-5 py-3 relative inline-block text-sm bg-theme group"
+          aria-label={label}
         >
           {/* Background hover effect */}
           <motion.div

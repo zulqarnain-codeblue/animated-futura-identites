@@ -56,6 +56,7 @@ const Footer = () => {
             <a
               href="#"
               className="text-white hover:text-white transition-colors flex gap-1.5 sm:gap-3 uppercase"
+              aria-label="Facebook"
             >
               <FaFacebookF size={20} />
               <span>Facebook</span>
@@ -63,6 +64,7 @@ const Footer = () => {
             <a
               href="#"
               className="text-white hover:text-white transition-colors flex gap-1.5 sm:gap-3 uppercase"
+              aria-label="LinkedIn"
             >
               <FaLinkedinIn size={20} />
               <span>LinkedIn</span>
@@ -70,6 +72,7 @@ const Footer = () => {
             <a
               href="#"
               className="text-white hover:text-white transition-colors flex gap-1.5 sm:gap-3 uppercase"
+              aria-label="Instagram"
             >
               <FaInstagram size={20} />
               <span>Instagram</span>
@@ -87,32 +90,56 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Our Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/what-we-do"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   What We Do
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/about"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Who We Are
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="#"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -127,37 +154,65 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Project Management
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Design & Branding
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Engineering
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Permits
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Manufacturing
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Installation
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/services"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   After-Sales Support
                 </Link>
               </li>
@@ -172,47 +227,83 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
-                  Brand Rollouts
+                <Link
+                  href="/products-capabilities/qrs-solution"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
+                  QRS Solution
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/exterior-signage"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Exterior Signage
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/interior-signage"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Interior Signage
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/architectural-elements"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Architectural Elements
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
-                  ADA Signs
+                <Link
+                  href="/products-capabilities/ada-solution"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
+                  ADA Solution
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/lighting-solutions"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Lighting Solutions
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/fleet-branding"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Fleet Branding
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/wayfinding-signs"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Wayfinding Signs
                 </Link>
               </li>
               <li>
-                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
+                <Link
+                  href="/products-capabilities/large-format-printing"
+                  aria-label="Link"
+                  className="hover:text-white transition-colors"
+                >
                   Large Format Printing
                 </Link>
               </li>
@@ -231,6 +322,7 @@ const Footer = () => {
                 <a
                   href="mailto:sales@futurasigns.com"
                   className="hover:text-white transition-colors"
+                  aria-label="Email address"
                 >
                   sales@futurasigns.com
                 </a>
@@ -240,6 +332,7 @@ const Footer = () => {
                 <a
                   href="tel:+12345678910"
                   className="text-theme font-semibold text-2xl hover:text-theme-400 transition-colors"
+                  aria-label="Phone number"
                 >
                   +12153333337
                 </a>
@@ -302,6 +395,7 @@ const Footer = () => {
             <a
               href="#"
               className="text-gray-500 hover:text-white text-sm transition-colors"
+              aria-label="Privacy Policy"
             >
               Privacy Policy
             </a>
@@ -309,6 +403,7 @@ const Footer = () => {
             <a
               href="#"
               className="text-gray-500 hover:text-white text-sm transition-colors"
+              aria-label="Terms & Conditions"
             >
               Terms & Conditions
             </a>

@@ -56,6 +56,7 @@ const NotchButton: React.FC<NotchButtonProps> = ({
         textSize,
         className
       )}
+      aria-label={label}
     >
       {/* Label */}
       <span>{label}</span>

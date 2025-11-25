@@ -102,6 +102,7 @@ const MagneticButton: React.FC<{
       style={{ x: springX, y: springY }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      aria-label="magnetic Button"
     >
       {children}
     </motion.button>

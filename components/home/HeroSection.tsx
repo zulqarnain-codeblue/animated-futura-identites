@@ -253,6 +253,7 @@ const AnimatedCTA: React.FC<AnimatedCTAProps> = ({
         <Link
           href={href}
           className="uppercase px-5 py-3 relative inline-block text-sm bg-theme group"
+          aria-label="Link to Futura Identities"
         >
           {/* Background hover effect */}
           <motion.div

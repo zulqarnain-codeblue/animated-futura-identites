@@ -170,7 +170,7 @@ const MenuItem: React.FC<{
       onMouseEnter={() => setHoveredItem(index)}
       onMouseLeave={() => setHoveredItem(null)}
     >
-      <Link href={item.href} onClick={onClose} className="group relative block py-2">
+      <Link href={item.href} onClick={onClose} className="group relative block py-2" aria-label="Menu Item">
         <motion.div
           className="flex items-center gap-4"
           animate={{ x: isHovered ? 20 : 0, opacity: isOtherHovered ? 0.3 : 1 }}
@@ -286,6 +286,7 @@ const ContactSection: React.FC = () => (
             <Link
               href={`tel:${CONTACT_INFO.phone}`}
               className="text-white text-xl font-semibold hover:text-theme transition-colors"
+              aria-label="Contact phone number"
             >
               {CONTACT_INFO.phone}
             </Link>
@@ -297,6 +298,7 @@ const ContactSection: React.FC = () => (
             <Link
               href={`mailto:${CONTACT_INFO.email}`}
               className="text-white text-xl font-semibold hover:text-theme transition-colors"
+              aria-label="Email address"
             >
               {CONTACT_INFO.email}
             </Link>
