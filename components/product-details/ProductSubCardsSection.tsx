@@ -124,7 +124,7 @@ export default function ProductSubCardsSection({
                     {item.title}
                   </motion.h3>
 
-                  <Link href="#" className="relative z-20">
+                  <Link href="#" aria-label="Link"className="relative z-20">
                     <motion.div
                       className="w-8 sm:w-12 h-8 sm:h-12 flex items-center justify-center rounded-full shadow-lg"
                       variants={arrowVariants}

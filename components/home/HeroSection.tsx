@@ -483,12 +483,13 @@ const HeroSection: React.FC = () => {
 
           {/* Video Section */}
           <motion.div
-            className="flex-1 max-h-[90vh] self-center xl:self-auto"
+            className="flex-1 max-h-[90vh] self-center xl:self-end flex items-end justify-center"
             initial={{ opacity: 0, x: 100 }}
             animate={
               startAnimation ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }
             }
             transition={{ duration: 1, ease, delay: 0.3 }}
+            style={{ aspectRatio: "1260/896" }}
           >
             <VideoReveal shouldAnimate={startAnimation}>
               <motion.div
@@ -501,7 +502,7 @@ const HeroSection: React.FC = () => {
 
                 <HLSVideoPlayer
                   src="/videos/hls/home-hero.m3u8"
-                  poster="/images/home-hero.webp"
+                  poster="/images/home-hero_2_optimized.webp"
                   className="w-full h-auto relative z-10"
                 />
 

@@ -34,7 +34,7 @@ const ease = [0.76, 0, 0.24, 1] as const;
 const testimonials = [
   {
     id: 1,
-    image: "/images/Mask group 8.webp",
+    image: "/images/Mask_group_8_576x481.webp",
     text: `"Futura Identities completely transformed our brand presence! Their attention 
     to detail and commitment to quality made all the difference. Futura Identities 
     completely transformed our brand presence! Their attention to detail and 
@@ -44,14 +44,14 @@ const testimonials = [
   },
   {
     id: 2,
-    image: "/images/Mask group 8.webp",
+    image: "/images/Mask_group_8_576x481.webp",
     text: `"Amazing service and high-quality product delivery. We trust them fully!"`,
     author: "Sarah Jennings",
     role: "Brand Director",
   },
   {
     id: 3,
-    image: "/images/Mask group 8.webp",
+    image: "/images/Mask_group_8_576x481.webp",
     text: `"The team at Futura Identities exceeded our expectations with their exceptional 
     service and attention to detail. They delivered a stunning result that exceeded our expectations."`,
     author: "Michael Reynolds",
@@ -60,7 +60,7 @@ const testimonials = [
 
   {
     id: 4,
-    image: "/images/Mask group 8.webp",
+    image: "/images/Mask_group_8_576x481.webp",
     text: `"Wow! The team at Futura Identities delivered a stunning result that exceeded our expectations. 
     They exceeded our expectations with their exceptional service and attention to detail."`,
     author: "Michael Reynolds",

@@ -7,7 +7,7 @@ import { H2, SubHeading } from "../ui/Typography";
 import { motion, useScroll, useTransform, Variants, useInView } from "framer-motion";
 
 const industries = [
-  { id: 1, name: "Healthcare", icon: "/icons/healthcare.webp", color: "gray" },
+  { id: 1, name: "Healthcare", icon: "/icons/image_10_27x26_1.webp", color: "orange" },
   {
     id: 2,
     name: "Manufacturing Facilities",
@@ -17,21 +17,21 @@ const industries = [
   {
     id: 3,
     name: "Stadium and Casinos",
-    icon: "/icons/custom-iconic-signage.webp",
-    color: "gray",
+    icon: "/icons/image_9_27x26_1.webp",
+    color: "orange",
   },
   {
     id: 4,
     name: "Corporate Identity",
-    icon: "/icons/corporte-identity.webp",
-    color: "gray",
+    icon: "/icons/image_8_27x26_1.webp",
+    color: "orange",
   },
-  { id: 5, name: "Education", icon: "/icons/education.webp", color: "blue" },
+  { id: 5, name: "Education", icon: "/icons/image_6_27x26_1.webp", color: "orange" },
   {
     id: 6,
     name: "QRS Solution",
-    icon: "/icons/restaurants.webp",
-    color: "gray",
+    icon: "/icons/image_7_27x26_1.webp",
+    color: "orange",
   },
 ];
 
@@ -145,31 +145,27 @@ export default function IndustriesSection() {
 // Extracted Card Component
 function IndustryCard({ industry }: { industry: (typeof industries)[0] }) {
   const isOrange = industry.color === "orange";
-  
+
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ 
-        scale: 1.05, 
+      whileHover={{
+        scale: 1.05,
         backgroundColor: "rgba(35, 35, 35, 0.95)",
-        zIndex: 10 
+        borderColor: isOrange ? "rgb(249 115 22)" : "rgba(255, 255, 255, 0.4)",
+        zIndex: 10,
       }}
       whileTap={{ scale: 0.98 }}
       className={`
-        relative p-8 sm:py-12 border-2 text-center cursor-pointer 
-        bg-[#1a1a1ad3] backdrop-blur-sm
-        transition-colors duration-300
-        ${
-          isOrange
-            ? "border-orange-500"
-            : "border-transparent hover:border-white/20"
-        }
+        relative p-8 sm:py-12 text-center cursor-pointer 
+        bg-[#1a1a1ad3] backdrop-blur-sm transition-colors duration-300
+        border-2 border-transparent
+        group
       `}
     >
+      {/* ICON */}
       <motion.div
-        className={`text-4xl mb-4 text-center ${
-          isOrange ? "text-orange-500" : "text-white"
-        }`}
+        className="text-4xl mb-4 text-center"
         whileHover={{ y: -5 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
@@ -178,15 +174,18 @@ function IndustryCard({ industry }: { industry: (typeof industries)[0] }) {
           alt={industry.name}
           width={27}
           height={27}
-          className="mx-auto"
+          className="
+            mx-auto 
+            grayscale 
+            group-hover:grayscale-0 
+            transition-all 
+            duration-300
+          "
         />
       </motion.div>
-      
-      <h3
-        className={`font-semibold text-center transition-colors ${
-          isOrange ? "text-white" : "text-white/60 group-hover:text-white"
-        }`}
-      >
+
+      {/* TEXT */}
+      <h3 className="font-semibold text-white/70 group-hover:text-white transition-colors">
         {industry.name}
       </h3>
     </motion.div>

@@ -288,6 +288,7 @@ export default function ComprehensiveBrandingSection() {
                             <button
                               onClick={() => handleServiceChange(actualIndex)}
                               className="w-full text-left transition-all duration-300 cursor-pointer relative"
+                              aria-label="Service Change Button"
                             >
                               {/* Connecting Line */}
                               <div

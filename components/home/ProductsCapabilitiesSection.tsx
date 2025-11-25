@@ -19,47 +19,52 @@ const ease = [0.76, 0, 0.24, 1] as const;
 interface Product {
   id: number;
   title: string;
+  slug: string;
   image: string;
 }
 
 const products: Product[] = [
-  { id: 1, title: "Exterior Signage", image: "/images/Mask group 5.webp" },
-  { id: 2, title: "ADA Signs", image: "/images/Mask group 6.webp" },
+  {
+    id: 1,
+    title: "QRS Solution",
+    slug: "qrs-solution",
+    image: "/images/Rounded Rectangle 1.webp",
+  },
+  {
+    id: 2,
+    title: "Exterior Signage",
+    slug: "exterior-signage",
+    image: "/images/Rectangle 8.webp",
+  },
   {
     id: 3,
-    title: "Lighting Solutions",
-    image:
-      "https://placehold.co/624x523/orange/white?text=LightingSolutions&font=roboto",
+    title: "Interior Signage",
+    slug: "interior-signage",
+    image: "/images/Rectangle 77.webp",
   },
   {
     id: 4,
-    title: "Interior Signage",
-    image:
-      "https://placehold.co/624x523/pink/white?text=Interior+Signage&font=roboto",
+    title: "Architectural Elements",
+    slug: "architectural-elements",
+    image: "/images/Rectangle 17.webp",
   },
   {
     id: 5,
-    title: "Digital Displays",
-    image:
-      "https://placehold.co/624x523/red/white?text=Digital+Displays&font=roboto",
+    title: "ADA Solution",
+    slug: "ada-solution",
+    image: "/images/Rectangle 23.webp",
   },
   {
     id: 6,
-    title: "Wayfinding",
-    image:
-      "https://placehold.co/624x523/green/white?text=Wayfinding&font=roboto",
+    title: "Lighting Solutions",
+    slug: "lighting-solutions",
+    image: "/images/Rectangle 27.webp",
   },
   {
     id: 7,
-    title: "Environmental Graphics",
-    image:
-      "https://placehold.co/624x523/653dff/white?text=Environmental+Graphics&font=roboto",
-  },
-  {
-    id: 8,
-    title: "Branded Solutions",
-    image:
-      "https://placehold.co/624x523/blue/white?text=Environmental+Graphics&font=roboto",
+    title: "Wayfinding Signs",
+    slug: "wayfinding-signs",
+    image: "/images/Rectangle 35.webp",
   },
 ];
 
@@ -95,7 +100,32 @@ const arrowVariants: Variants = {
     transition: { duration: 0.3 },
   },
 };
+// Text reveal animation
+const RevealText: React.FC<{
+  children: React.ReactNode;
+  delay?: number;
+}> = ({ children, delay = 0 }) => {
+  const variants: Variants = {
+    hidden: { y: "100%", opacity: 0 },
+    visible: {
+      y: "0%",
+      opacity: 1,
+      transition: { duration: 0.8, ease, delay },
+    },
+  };
 
+  return (
+    <motion.div
+      className="overflow-hidden"
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }} // triggers only once
+    >
+      {children}
+    </motion.div>
+  );
+};
 export default function ProductsCapabilitiesSection() {
   const [index, setIndex] = useState(0);
   const [width, setWidth] = useState(0);
@@ -148,27 +178,6 @@ export default function ProductsCapabilitiesSection() {
     });
   }, [index, controls]);
 
-  // Text reveal animation
-  const RevealText: React.FC<{
-    children: React.ReactNode;
-    delay?: number;
-  }> = ({ children, delay = 0 }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-    return (
-      <div ref={ref} className="overflow-hidden">
-        <motion.div
-          initial={{ y: "100%" }}
-          animate={isInView ? { y: 0 } : { y: "100%" }}
-          transition={{ duration: 0.8, ease, delay }}
-        >
-          {children}
-        </motion.div>
-      </div>
-    );
-  };
-
   return (
     <Section className="bg-white overflow-hidden" fullWidth={true}>
       <div className="max-w-[1000px] xl:max-w-[1400px] bg-white ml-auto py-10 sm:py-20 pl-8">
@@ -213,13 +222,13 @@ export default function ProductsCapabilitiesSection() {
                 variants={cardVariants}
               >
                 {/* Image Wrapper for scaling */}
-                <div className="w-full h-full overflow-hidden">
+                <div className="w-full h-full overflow-hidden max-w-[550] max-h-[461]">
                   <motion.img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover"
-                    width={624}
-                    height={523}
+                    width={550}
+                    height={461}
                     variants={imageVariants}
                   />
                 </div>
@@ -237,7 +246,10 @@ export default function ProductsCapabilitiesSection() {
                       {item.title}
                     </motion.h3>
 
-                    <Link href="#" className="relative z-20">
+                    <Link
+                      href={`/products-capabilities/${item.slug}`}
+                      className="relative z-20"
+                    >
                       <motion.div
                         className="w-8 sm:w-12 h-8 sm:h-12 flex items-center justify-center rounded-full shadow-lg"
                         variants={arrowVariants}

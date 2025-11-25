@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="w-56">
               <div className="flex items-center gap-4">
                 <div>
-                  <Link href="/">
+                  <Link href="/" aria-label="Futura Identities Logo">
                     <Image
                       src="/logos/logo.svg"
                       alt="Futura Identities Logo"
@@ -87,34 +87,34 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Our Portfolio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   What We Do
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Who We Are
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -127,39 +127,39 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Project Management
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Design & Branding
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Engineering
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Permits
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Manufacturing
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Installation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   After-Sales Support
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -172,49 +172,49 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Brand Rollouts
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Exterior Signage
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Interior Signage
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Architectural Elements
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   ADA Signs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Lighting Solutions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Fleet Branding
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Wayfinding Signs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href="#" aria-label="Link"className="hover:text-white transition-colors">
                   Large Format Printing
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -282,6 +282,7 @@ const Footer = () => {
               <button
                 type="submit"
                 className="bg-theme hover:bg-theme-600 text-white px-3 sm:px-8 py-3 sm:py-4 font-semibold transition-colors flex items-center gap-2"
+                aria-label="Subscribe to newsletter"
               >
                 SUBMIT
                 <IoIosSend size={24} />
