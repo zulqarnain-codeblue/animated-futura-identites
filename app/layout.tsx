@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={dmSans.variable}>
       <body>
-        <article className="max-w-[1920px] mx-auto">
+        <article className="max-w-[1920px] mx-auto overflow-hidden">
           <Header />
           {/* <Preloader /> */}
           {/* <SplitLoader /> */}

@@ -188,7 +188,7 @@ const MenuItem: React.FC<{
           <div className="relative overflow-hidden">
             {/* Main text */}
             <motion.div
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.02em]"
+              className="text-md sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-[-0.02em]"
               animate={{ y: isHovered ? "-100%" : 0 }}
               transition={{ duration: 0.4, ease }}
             >
@@ -197,7 +197,7 @@ const MenuItem: React.FC<{
 
             {/* Hover text */}
             <motion.div
-              className="absolute inset-0 text-4xl md:text-6xl lg:text-7xl font-bold text-theme tracking-[-0.02em]"
+              className="absolute inset-0 text-md sm:text-4xl md:text-6xl lg:text-7xl font-bold text-theme tracking-[-0.02em]"
               initial={{ y: "100%" }}
               animate={{ y: isHovered ? 0 : "100%" }}
               transition={{ duration: 0.4, ease }}
@@ -461,7 +461,7 @@ const Header: React.FC = () => {
               <BackgroundShapes />
 
               {/* Navigation */}
-              <div className="h-full flex items-center px-8 lg:px-16 pt-20 pb-32">
+              <div className="h-full flex items-center px-6 sm:px-8 lg:px-16 pt-20 pb-32">
                 <nav className="w-full max-w-5xl" aria-label="Main navigation">
                   <ul className="space-y-2">
                     {MENU_ITEMS.map((item, index) => (
