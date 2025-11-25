@@ -500,7 +500,7 @@ const HeroSection: React.FC = () => {
                 <motion.div className="absolute -inset-4 bg-theme/20 blur-2xl rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <HLSVideoPlayer
-                  src="/videos/home-hero.m3u8"
+                  src="/videos/hls/home-hero.m3u8"
                   poster="/images/home-hero.webp"
                   className="w-full h-auto relative z-10"
                 />
