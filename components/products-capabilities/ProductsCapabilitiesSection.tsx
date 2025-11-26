@@ -29,7 +29,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -52,7 +52,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -85,12 +85,12 @@ const ImageReveal: React.FC<{
       ref={ref}
       initial={{ clipPath: clipPaths[direction].hidden }}
       animate={isInView ? { clipPath: clipPaths[direction].visible } : {}}
-      transition={{ duration: 1.2, ease, delay }}
+      transition={{ duration: 0.7, ease, delay }}
     >
       <motion.div
         initial={{ scale: 1.1 }}
         animate={isInView ? { scale: 1 } : { scale: 1.1 }}
-        transition={{ duration: 1.4, ease, delay }}
+        transition={{ duration: 0.8, ease, delay }}
       >
         {children}
       </motion.div>
@@ -147,7 +147,7 @@ const AnimatedBorder: React.FC<{
       className={className}
       initial={{ scaleY: 0 }}
       animate={isInView ? { scaleY: 1 } : {}}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
       style={{ originY: 0 }}
     />
   );
@@ -226,7 +226,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9,
+        duration: 0.6,
         ease,
       },
     },
@@ -239,7 +239,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9,
+        duration: 0.6,
         ease,
       },
     },
@@ -282,15 +282,15 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
 
               {/* Animated Horizontal Tag */}
               {tag && (
-                <motion.div
-                  className={`h-full flex items-start mt-3 ${
+                  <motion.div
+                    className={`h-full flex items-start mt-3 ${
                     layout === "left" ? "justify-start" : "justify-end"
                   } hidden md:flex`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={
                     isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                   }
-                  transition={{ duration: 0.8, ease, delay: 0.4 }}
+                  transition={{ duration: 0.5, ease, delay: 0.3 }}
                 >
                   <p
                     className={`text-sm tracking-widest uppercase text-black transform whitespace-nowrap flex justify-center items-center gap-2 ${
@@ -319,17 +319,16 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
                       }
                       // 3. Keep only transition timing properties here
                       transition={{
-                        duration: 0.8,
+                        duration: 0.5,
                         ease,
-                        delay: 0.5,
-                        // originX is REMOVED from here
+                        delay: 0.3,
                       }}
                     />
                     <motion.span
                       className="opacity-50"
                       initial={{ opacity: 0 }}
                       animate={isInView ? { opacity: 0.5 } : { opacity: 0 }}
-                      transition={{ duration: 0.6, delay: 0.6 }}
+                      transition={{ duration: 0.4, delay: 0.4 }}
                     >
                       {tag}
                     </motion.span>
@@ -352,7 +351,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
                     ? { opacity: 1, scale: 1 }
                     : { opacity: 0, scale: 0.8 }
                 }
-                transition={{ duration: 0.8, ease, delay: 0.3 }}
+                transition={{ duration: 0.5, ease, delay: 0.2 }}
               >
                 <Image
                   src="/images/d56eac3a7219904deaaff9bd7cad01e6c0d7e110.webp"
@@ -404,7 +403,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
                 {/* Small Optional Image */}
                 {smallImageUrl && (
                   <motion.div
-                    className={`sm:mt-0 sm:ml-0 w-1/2 sm:w-full w-max-w-[250px] lg:w-1/2 xl:w-max-w-[350px] relative z-10 sm:top-0 md:top-10 lg:top-10 z-0
+                    className={`sm:mt-0 sm:ml-0 w-1/2 sm:w-full w-max-w-[250px] lg:w-1/2 xl:w-max-w-[350px] relative z-10 sm:top-0 md:top-10 lg:top-10
                     ${
                       layout === "left"
                         ? "md:-left-24 lg:-left-40"
@@ -417,9 +416,9 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
                         : { opacity: 0, scale: 0.8, rotate: -5 }
                     }
                     transition={{
-                      duration: 0.7,
+                      duration: 0.5,
                       ease: [0.34, 1.56, 0.64, 1],
-                      delay: 0.4,
+                      delay: 0.3,
                     }}
                     whileHover={{
                       scale: 1.05,
@@ -428,7 +427,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
                     }}
                   >
                     <ImageReveal
-                      delay={0.35}
+                      delay={0.25}
                       direction={isLeftLayout ? "right" : "left"}
                     >
                       <Image
@@ -455,7 +454,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
                     animate={
                       isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                     }
-                    transition={{ duration: 0.8, ease, delay: 0.6 }}
+                    transition={{ duration: 0.5, ease, delay: 0.4 }}
                   >
                     <Magnetic strength={0.25}>
                       <motion.div

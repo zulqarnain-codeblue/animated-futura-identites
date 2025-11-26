@@ -64,7 +64,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -87,7 +87,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -125,13 +125,13 @@ const ImageReveal: React.FC<{
               }
             : {}
         }
-        transition={{ duration: 1.2, ease, delay }}
+        transition={{ duration: 0.7, ease, delay }}
         className="relative w-full h-full"
       >
         <motion.div
           initial={{ scale: 1.3 }} // Increased scale slightly for more drama
           animate={isInView ? { scale: 1 } : { scale: 1.3 }}
-          transition={{ duration: 1.4, ease, delay }}
+          transition={{ duration: 0.8, ease, delay }}
           className="w-full h-full block"
         >
           {children}
@@ -168,7 +168,7 @@ const AboutSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 0.6, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, ease }}
+          transition={{ duration: 0.7, ease }}
         />
 
         <div className="relative z-10">
@@ -178,7 +178,7 @@ const AboutSection: React.FC = () => {
             <div className="relative group flex flex-col max-w-[250px] sm:max-w-[400px] lg:max-w-[500px] lg:flex-[0_0_300px] xl:flex-[0_0_450px] 2xl:flex-[0_0_490px] order-2 xl:order-1">
               {/* Image Container */}
               <div className="w-full">
-                <ImageReveal delay={0.2} direction="left">
+                <ImageReveal delay={0.12} direction="left">
                   {/* We wrap Image in a div to ensure it behaves block-level for the scale animation */}
                   <div className="relative w-full h-full">
                     <Image
@@ -195,7 +195,7 @@ const AboutSection: React.FC = () => {
 
               {/* CTA Button */}
               <FadeUp
-                delay={0.5}
+                delay={0.3}
                 className="z-20 flex justify-end relative pointer-events-none"
               >
                 {/* Pointer events set to auto on the button wrapper itself */}
@@ -223,10 +223,10 @@ const AboutSection: React.FC = () => {
                 <RevealText delay={0}>
                   <SubHeading>ABOUT FUTURA IDENTITIES</SubHeading>
                 </RevealText>
-                <RevealText delay={0.1}>
+                <RevealText delay={0.06}>
                   <H2>Innovators in Branding & Signage</H2>
                 </RevealText>
-                <FadeUp delay={0.3}>
+                <FadeUp delay={0.18}>
                   <Paragraph className="max-w-[350px] sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-lg 2xl:max-w-xl ml-auto pr-10 lg:pr-14 xl:pr-24 mt-6 lg:mt-6 xl:mt-10 2xl:mt-14 2xl:text-[22px]">
                     At Futura Identities, our talent is our people. With a team
                     of 75 skilled professionals working from our 50,000 sq. ft.
@@ -242,7 +242,7 @@ const AboutSection: React.FC = () => {
             {/* --- RIGHT IMAGE SECTION --- */}
             <div className="mt-5 md:mt-10 xl:mt-70 flex justify-end max-w-[220px] sm:max-w-[300px] lg:flex-[0_0_200px] xl:flex-[0_0_280px] 2xl:flex-[0_0_330px] order-3 self-end">
               <div className="relative w-full group">
-                <ImageReveal delay={0.3} direction="right">
+                <ImageReveal delay={0.18} direction="right">
                   <div className="relative w-full h-full">
                     <Image
                       src="/images/Mask group 1.webp"

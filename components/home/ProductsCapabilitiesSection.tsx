@@ -80,17 +80,17 @@ const revealVariants: Variants = {
   visible: {
     y: "0%",
     opacity: 1,
-    transition: { duration: 0.8, ease: ease }, // Use the const 'ease'
+    transition: { duration: 0.5, ease: ease }, // Use the const 'ease'
   },
 };
 
 const cardVariants: Variants = {
-  hover: { scale: 0.98, transition: { duration: 0.4 } },
+  hover: { scale: 0.98, transition: { duration: 0.24 } },
 };
 
 const imageVariants: Variants = {
   rest: { scale: 1.05 },
-  hover: { scale: 1.15, transition: { duration: 0.6, ease: "easeOut" } },
+  hover: { scale: 1.15, transition: { duration: 0.36, ease: "easeOut" } },
 };
 
 const arrowVariants: Variants = {
@@ -100,7 +100,7 @@ const arrowVariants: Variants = {
     scale: 1.1,
     backgroundColor: "#f97316",
     color: "#ffffff",
-    transition: { duration: 0.3 },
+                        transition: { duration: 0.18 },
   },
 };
 // Text reveal animation
@@ -113,7 +113,7 @@ const RevealText: React.FC<{
     visible: {
       y: "0%",
       opacity: 1,
-      transition: { duration: 0.8, ease, delay },
+      transition: { duration: 0.5, ease, delay },
     },
   };
 
@@ -244,7 +244,7 @@ export default function ProductsCapabilitiesSection() {
                   <div className="flex justify-between items-end w-full">
                     <motion.h3
                       className="text-white sm:text-xl xl:text-[25px] font-light z-10"
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.18 }}
                     >
                       {item.title}
                     </motion.h3>
@@ -289,7 +289,7 @@ export default function ProductsCapabilitiesSection() {
                 // Calculate width percentage: (current index + 1) / total items
                 initial={{ width: "0%" }}
                 animate={{ width: `${((index + 1) / products.length) * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               />
             </div>
 
@@ -309,7 +309,7 @@ export default function ProductsCapabilitiesSection() {
                 // Calculate width percentage: (current index + 1) / total items
                 initial={{ width: "0%" }}
                 animate={{ width: `${((index + 1) / products.length) * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               />
             </div>
           </div>

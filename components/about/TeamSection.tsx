@@ -22,7 +22,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -44,13 +44,13 @@ const TeamCard: React.FC<{ member: TeamMember; index: number }> = ({
       initial={{ opacity: 0, y: 80, scale: 0.9 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{
-        duration: 0.9,
+        duration: 0.6,
         ease,
-        delay: index * 0.15 + 0.4, // Staggered entry
+        delay: index * 0.09 + 0.24, // Staggered entry
       }}
       whileHover={{
         y: -12,
-        transition: { duration: 0.4, ease },
+        transition: { duration: 0.24, ease },
       }}
       className="flex-[1_1_200px] max-w-[250px] group"
     >
@@ -59,7 +59,7 @@ const TeamCard: React.FC<{ member: TeamMember; index: number }> = ({
         <motion.div
           className="w-full aspect-square bg-gray-100 flex items-center justify-center mb-4 hover:rounded-2xl overflow-hidden shadow-md transition-shadow duration-500 group-hover:shadow-2xl"
           whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.36 }}
         >
           <svg
             className="w-1/2 h-1/2 text-gray-300 group-hover:text-gray-400 transition-colors duration-500"
@@ -76,7 +76,7 @@ const TeamCard: React.FC<{ member: TeamMember; index: number }> = ({
             <motion.h3
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: index * 0.15 + 0.7, duration: 0.6 }}
+              transition={{ delay: index * 0.09 + 0.42, duration: 0.36 }}
               className="text-lg font-bold text-gray-800"
             >
               {member.name}
@@ -84,7 +84,7 @@ const TeamCard: React.FC<{ member: TeamMember; index: number }> = ({
             <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: index * 0.15 + 0.8, duration: 0.6 }}
+              transition={{ delay: index * 0.09 + 0.48, duration: 0.36 }}
               className="text-xs text-gray-600"
             >
               {member.title}
@@ -95,7 +95,7 @@ const TeamCard: React.FC<{ member: TeamMember; index: number }> = ({
           <motion.span
             whileHover={{ scale: 1.2, rotate: 360 }}
             whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             className="bg-gray-400 p-2 rounded-full cursor-pointer group-hover:bg-linkedin-blue transition-colors duration-300"
           >
             <FaLinkedinIn size={16} className="text-white" />
@@ -141,12 +141,12 @@ const TeamSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={headingInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease, delay: 0.2 }}
+            transition={{ duration: 0.5, ease, delay: 0.12 }}
           >
             <SubHeading className="mb-2 text-gray-600">Our Team</SubHeading>
           </motion.div>
 
-          <RevealText delay={0.1}>
+          <RevealText delay={0.06}>
             <H2>It’s a Team Effort!</H2>
           </RevealText>
         </div>

@@ -13,7 +13,7 @@ const RevealText: React.FC<{
   delay?: number;
 }> = ({ children, delay = 0 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <div ref={ref} className="overflow-hidden">
@@ -35,7 +35,7 @@ const FadeUp: React.FC<{
   className?: string;
 }> = ({ children, delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -57,7 +57,7 @@ const ImageReveal: React.FC<{
   direction?: "left" | "right" | "up";
 }> = ({ children, delay = 0, direction = "up" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   const clipPaths = {
     left: {
@@ -95,7 +95,7 @@ const AnimatedBorder: React.FC<{
   className?: string;
 }> = ({ delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -159,7 +159,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
   const layoutClasses = isLeftLayout ? "md:flex-row" : "md:flex-row-reverse";
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   // Container animation with stagger
   const containerVariants = {

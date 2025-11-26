@@ -19,7 +19,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -61,7 +61,7 @@ const FacilitySection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.2, ease, delay: 0.2 }}
+            transition={{ duration: 0.7, ease, delay: 0.12 }}
             className="lg:w-1/2"
           >
             <RevealText>
@@ -70,7 +70,7 @@ const FacilitySection: React.FC = () => {
               </H2>
             </RevealText>
 
-            <RevealText delay={0.15}>
+            <RevealText delay={0.09}>
               <H3 className="text-black opacity-90 font-semibold leading-tight">
                 Where the best value comes <br className="hidden sm:inline" />
                 with the best values
@@ -80,7 +80,7 @@ const FacilitySection: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.7, duration: 1 }}
+              transition={{ delay: 0.42, duration: 0.6 }}
               className="flex border-l-4 border-theme pl-6 mt-10"
             >
               <Paragraph className="opacity-75 leading-relaxed text-base">
@@ -97,7 +97,7 @@ const FacilitySection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 80 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1.4, ease, delay: 0.4 }}
+            transition={{ duration: 0.8, ease, delay: 0.24 }}
             className="lg:w-1/2 relative"
             style={{ perspective: 1400 }}
           >
@@ -106,7 +106,7 @@ const FacilitySection: React.FC = () => {
               <motion.div
                 initial={{ rotate: -6, scale: 0.9 }}
                 animate={isInView ? { rotate: 0, scale: 1 } : {}}
-                transition={{ duration: 1.4, ease, delay: 0.8 }}
+                transition={{ duration: 0.8, ease, delay: 0.48 }}
                 whileHover={{ rotate: -2, y: -12, scale: 1.04 }}
                 className="relative w-[67%] ml-auto origin-right z-10"
               >
@@ -114,7 +114,7 @@ const FacilitySection: React.FC = () => {
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={isInView ? { scaleX: 1 } : {}}
-                  transition={{ duration: 1.6, delay: 1.4 }}
+                  transition={{ duration: 0.9, delay: 0.84 }}
                   className="absolute -top-4 left-4 w-full h-full border-2 border-gray-300 origin-left -z-10"
                 />
 
@@ -127,7 +127,7 @@ const FacilitySection: React.FC = () => {
                         ? { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }
                         : {}
                     }
-                    transition={{ duration: 1.8, ease, delay: 1 }}
+                    transition={{ duration: 1.0, ease, delay: 0.6 }}
                     className="w-full h-[280px] md:h-[320px]"
                   >
                     <Image
@@ -145,7 +145,7 @@ const FacilitySection: React.FC = () => {
               <motion.div
                 initial={{ y: 100, rotate: 8, scale: 0.85 }}
                 animate={isInView ? { y: 0, rotate: 0, scale: 1 } : {}}
-                transition={{ duration: 1.4, ease, delay: 1.1 }}
+                transition={{ duration: 0.8, ease, delay: 0.66 }}
                 whileHover={{ y: -20, scale: 1.06 }}
                 className="relative -mt-20 ml-10 w-[52%] origin-bottom-left z-10"
               >
@@ -157,7 +157,7 @@ const FacilitySection: React.FC = () => {
                         ? { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }
                         : {}
                     }
-                    transition={{ duration: 1.6, ease, delay: 1.4 }}
+                    transition={{ duration: 0.9, ease, delay: 0.84 }}
                     className="w-full h-[200px] md:h-[240px]"
                   >
                     <Image
@@ -175,7 +175,7 @@ const FacilitySection: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: 1.6 }}
+                transition={{ delay: 0.96 }}
                 className="absolute top-48 -right-8 hidden md:block"
               >
                 <p className="text-sm tracking-widest uppercase text-gray-800 transform -rotate-90 origin-left flex items-center gap-4 whitespace-nowrap">
@@ -183,7 +183,7 @@ const FacilitySection: React.FC = () => {
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={isInView ? { scaleX: 1 } : {}}
-                    transition={{ duration: 1.2, delay: 2 }}
+                    transition={{ duration: 0.7, delay: 1.2 }}
                     className="bg-theme w-20 h-0.5 origin-left"
                   />
                 </p>
@@ -193,7 +193,7 @@ const FacilitySection: React.FC = () => {
               <motion.div
                 initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
                 animate={isInView ? { scale: 1, opacity: 1, rotate: 0 } : {}}
-                transition={{ duration: 1.6, delay: 1.8, ease }}
+                transition={{ duration: 0.9, delay: 1.08, ease }}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <Image

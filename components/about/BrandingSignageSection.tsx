@@ -63,7 +63,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -86,7 +86,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -116,13 +116,13 @@ const ImageReveal: React.FC<{
       initial={{ clipPath: clipPaths[direction].hidden }}
       whileInView={{ clipPath: clipPaths[direction].visible }}
       viewport={{ once: true, margin: "100px" }}
-      transition={{ duration: 1.2, ease, delay }}
+      transition={{ duration: 0.7, ease, delay }}
     >
       <motion.div
         initial={{ scale: 1.1 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true, margin: "100px" }}
-        transition={{ duration: 1.4, ease, delay }}
+        transition={{ duration: 0.8, ease, delay }}
       >
         {children}
       </motion.div>
@@ -145,13 +145,13 @@ const RotatingText: React.FC<{
       style={{ transformOrigin: "0 0" }}
       initial={{ opacity: 0, x: -20 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       <motion.span
         className="opacity-50"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 0.5 } : {}}
-        transition={{ duration: 0.6, delay: delay + 0.2 }}
+        transition={{ duration: 0.4, delay: delay + 0.12 }}
       >
         {text}
       </motion.span>
@@ -159,7 +159,7 @@ const RotatingText: React.FC<{
         className="bg-theme w-12 h-0.5 inline-block"
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.8, ease, delay: delay + 0.4 }}
+        transition={{ duration: 0.5, ease, delay: delay + 0.24 }}
         style={{ originX: 0 }}
       />
     </motion.p>
@@ -180,7 +180,7 @@ const AnimatedBorder: React.FC<{
       className={className}
       initial={{ scaleY: 0 }}
       animate={isInView ? { scaleY: 1 } : {}}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
       style={{ originY: 0 }}
     />
   );
@@ -209,7 +209,7 @@ export default function BrandingSignageSection() {
               OUR STORY
             </SubHeading>
           </RevealText>
-          <RevealText delay={0.1}>
+          <RevealText delay={0.06}>
             <H2 className="mb-0 md:mb-8">
               Innovators in
               <br />
@@ -226,20 +226,20 @@ export default function BrandingSignageSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.06 }}
           >
             {/* Main Image */}
             <div className="relative">
               {/* The Vertical 'Who we are' Text Overlay (Hidden on mobile) */}
               <div className="absolute top-[158px] -left-8 h-full w-0 hidden md:flex items-start justify-start">
-                <RotatingText text="Who we are" delay={0.5} />
+                <RotatingText text="Who we are" delay={0.3} />
               </div>
 
               <ImageReveal delay={0.2} direction="left">
                 <motion.div
                   style={{ y: imageY }}
                   whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <Image
                     src="/images/Rectangle 52.webp"
@@ -257,7 +257,7 @@ export default function BrandingSignageSection() {
                 initial={{ height: 0 }}
                 whileInView={{ height: "10rem" }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease, delay: 0.6 }}
+                transition={{ duration: 0.5, ease, delay: 0.36 }}
               />
             </div>
           </motion.div>
@@ -268,11 +268,11 @@ export default function BrandingSignageSection() {
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease, delay: 0.2 }}
+            transition={{ duration: 0.6, ease, delay: 0.12 }}
           >
             <div>
               <div className="max-w-md">
-                <RevealText delay={0.3}>
+                <RevealText delay={0.18}>
                   <H3 className="font-bold mb-6 text-black 2xl:text-5xl">
                     Future of branding & Signage
                   </H3>
@@ -282,11 +282,11 @@ export default function BrandingSignageSection() {
                 <div className="border-l-2 border-theme pl-6 mb-8 relative">
                   {/* Animated border overlay */}
                   <AnimatedBorder
-                    delay={0.4}
+                    delay={0.24}
                     className="absolute left-0 top-0 w-0.5 bg-theme"
                   />
 
-                  <FadeUp delay={0.5}>
+                  <FadeUp delay={0.3}>
                     <Paragraph className="leading-7 opacity-60">
                       At Futura Identities, our talent is our people. With a
                       team of 75 skilled professionals working from our 50,000
@@ -302,7 +302,7 @@ export default function BrandingSignageSection() {
 
               <div className="flex justify-between items-end gap-3">
                 {/* Watch Button */}
-                <FadeUp delay={0.6}>
+                <FadeUp delay={0.36}>
                   <Magnetic strength={0.2}>
                     <motion.button
                       className="bg-theme hover:bg-theme-600 transition-colors text-white font-semibold py-4 px-5 flex flex-col items-start justify-center gap-3 relative overflow-hidden group"
@@ -315,7 +315,7 @@ export default function BrandingSignageSection() {
                         className="absolute inset-0 bg-black/10"
                         initial={{ x: "-100%" }}
                         whileHover={{ x: 0 }}
-                        transition={{ duration: 0.4, ease }}
+                        transition={{ duration: 0.24, ease }}
                       />
 
                       {/* Play icon with animation */}
@@ -338,18 +338,18 @@ export default function BrandingSignageSection() {
                         className="absolute bottom-0 right-0 w-2 h-2 bg-white/30"
                         initial={{ scale: 0 }}
                         whileHover={{ scale: 1 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.18 }}
                       />
                     </motion.button>
                   </Magnetic>
                 </FadeUp>
 
                 {/* Right Image (Rectangle 53.webp) */}
-                <FadeUp delay={0.7} className="overflow-hidden w-1/2">
-                  <ImageReveal delay={0.5} direction="right">
+                <FadeUp delay={0.42} className="overflow-hidden w-1/2">
+                  <ImageReveal delay={0.3} direction="right">
                     <motion.div
                       whileHover={{ scale: 1.03 }}
-                      transition={{ duration: 0.5 }}
+                      transition={{ duration: 0.3 }}
                       className="h-full"
                     >
                       <Image

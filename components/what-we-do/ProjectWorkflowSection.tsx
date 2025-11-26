@@ -20,14 +20,14 @@ const RevealText: React.FC<{
   delay?: number;
 }> = ({ children, delay = 0 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <div ref={ref} className="overflow-hidden">
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -42,7 +42,7 @@ const FadeUp: React.FC<{
   className?: string;
 }> = ({ children, delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -50,7 +50,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -64,7 +64,7 @@ const ImageReveal: React.FC<{
   direction?: "left" | "right" | "up" | "down";
 }> = ({ children, delay = 0, direction = "up" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   const clipPaths = {
     left: { hidden: "inset(0px 100% 0px 0px)", visible: "inset(0px 0% 0px 0px)" },
@@ -81,12 +81,12 @@ const ImageReveal: React.FC<{
       ref={ref}
       initial={{ clipPath: clipPaths[direction].hidden }}
       animate={isInView ? { clipPath: clipPaths[direction].visible } : {}}
-      transition={{ duration: 1.2, ease, delay }}
+      transition={{ duration: 0.7, ease, delay }}
     >
       <motion.div
         initial={{ scale: 1.1, rotate: 0 }}
         animate={isInView ? { scale: 1, rotate: 0 } : { scale: 1.1, rotate: 0 }}
-        transition={{ duration: 1.4, ease, delay }}
+        transition={{ duration: 0.8, ease, delay }}
       >
         {children}
       </motion.div>
@@ -136,17 +136,17 @@ const GridItem: React.FC<GridItemProps> = ({
   direction = "up",
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   return (
-    <FadeUp delay={index * 0.1} className="relative h-64 w-full overflow-hidden group">
-      <ImageReveal delay={index * 0.08} direction={direction}>
+    <FadeUp delay={index * 0.06} className="relative h-64 w-full overflow-hidden group">
+    <ImageReveal delay={index * 0.05} direction={direction}>
         <motion.div
           ref={ref}
           className="relative w-full h-64"
           whileHover={{
             scale: 1.05,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.3 },
           }}
         >
           <ParallaxImage src={src} alt={alt} />
@@ -156,7 +156,7 @@ const GridItem: React.FC<GridItemProps> = ({
             className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.18 }}
           />
         </motion.div>
       </ImageReveal>
@@ -218,7 +218,7 @@ function ProjectWorkflowSection() {
         <RevealText>
           <SubHeading className="sm:mb-3">Project Workflow</SubHeading>
         </RevealText>
-        <RevealText delay={0.1}>
+        <RevealText delay={0.06}>
           <H2>Project Workflow Visual</H2>
         </RevealText>
       </div>
@@ -229,7 +229,7 @@ function ProjectWorkflowSection() {
         className="mb-10 grid grid-cols-1 md:grid-cols-4 gap-1.5 max-w-6xl mx-auto mt-8"
         initial={{ opacity: 0 }}
         animate={isContainerInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.4 }}
       >
         {/* Row 1 */}
         <div className={gridItems[0].span}>

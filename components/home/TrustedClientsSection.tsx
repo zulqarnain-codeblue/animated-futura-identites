@@ -21,7 +21,7 @@ export default function TrustedClientsSection() {
               group 
               flex items-center justify-center 
               bg-white border border-gray-200
-              transition-all duration-300
+              transition-all duration-180
               hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)]
               hover:-translate-y-1
               relative
@@ -33,7 +33,7 @@ export default function TrustedClientsSection() {
                 absolute top-0 left-0 w-full h-[3px] 
                 bg-theme-500 
                 scale-x-0 group-hover:scale-x-100 
-                transition-transform origin-left duration-300
+                transition-transform origin-left duration-180
               "
             />
 

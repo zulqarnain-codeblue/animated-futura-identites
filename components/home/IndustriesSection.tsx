@@ -43,8 +43,8 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.09,
+      delayChildren: 0.12,
     },
   },
 };
@@ -59,6 +59,7 @@ const cardVariants: Variants = {
       type: "spring",
       stiffness: 70,
       damping: 15,
+      duration: 0.36,
     },
   },
 };
@@ -70,9 +71,8 @@ const headerVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: { 
-        duration: 0.8, 
-        // 5. Add 'as const' to fix strict array typing for ease curves
-        ease: [0.22, 1, 0.36, 1] as const 
+      duration: 0.5, 
+      ease: [0.22, 1, 0.36, 1] as const 
     },
   },
 };
@@ -154,8 +154,9 @@ function IndustryCard({ industry }: { industry: (typeof industries)[0] }) {
         backgroundColor: "rgba(35, 35, 35, 0.95)",
         borderColor: isOrange ? "rgb(249 115 22)" : "rgba(255, 255, 255, 0.4)",
         zIndex: 10,
+        transition: { duration: 0.24 }
       }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.98, transition: { duration: 0.18 } }}
       className={`
         relative px-6 sm:px-8 py-8 sm:py-12 text-center cursor-pointer 
         bg-[#1a1a1ad3] backdrop-blur-sm transition-colors duration-300
@@ -167,7 +168,7 @@ function IndustryCard({ industry }: { industry: (typeof industries)[0] }) {
       <motion.div
         className="text-4xl mb-4 text-center"
         whileHover={{ y: -5 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        transition={{ type: "spring", stiffness: 300, duration: 0.18 }}
       >
         <Image
           src={industry.icon}

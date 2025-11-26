@@ -48,7 +48,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -70,7 +70,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -116,12 +116,12 @@ const ImageReveal: React.FC<{
       // We set the initial manually to ensure server-side rendering matches
       initial={{ clipPath: clipPaths[direction].hidden }}
       animate={isInView ? { clipPath: clipPaths[direction].visible } : {}}
-      transition={{ duration: 1.2, ease, delay }}
+      transition={{ duration: 0.7, ease, delay }}
     >
       <motion.div
         initial={{ scale: 1.1 }}
         animate={isInView ? { scale: 1 } : { scale: 1.1 }}
-        transition={{ duration: 1.4, ease, delay }}
+        transition={{ duration: 0.8, ease, delay }}
       >
         {children}
       </motion.div>
@@ -143,13 +143,13 @@ const RotatingText: React.FC<{
       style={{ transformOrigin: "0 0" }}
       initial={{ opacity: 0, x: 20 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       <motion.span
         className="opacity-50"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 0.5 } : {}}
-        transition={{ duration: 0.6, delay: delay + 0.2 }}
+        transition={{ duration: 0.4, delay: delay + 0.12 }}
       >
         {text}
       </motion.span>
@@ -157,7 +157,7 @@ const RotatingText: React.FC<{
         className="bg-theme w-12 h-0.5 inline-block"
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.8, ease, delay: delay + 0.4 }}
+        transition={{ duration: 0.5, ease, delay: delay + 0.24 }}
         style={{ originX: 0 }}
       />
     </motion.p>
@@ -177,7 +177,7 @@ const AnimatedBorder: React.FC<{
       className={className}
       initial={{ scaleY: 0 }}
       animate={isInView ? { scaleY: 1 } : {}}
-      transition={{ duration: 1, ease, delay }}
+      transition={{ duration: 0.6, ease, delay }}
       style={{ originY: 0 }}
     />
   );
@@ -200,7 +200,7 @@ const StaggerParagraph: React.FC<{
           className="inline-block mr-[0.3em]"
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 0.7, y: 0 } : {}}
-          transition={{ duration: 0.4, ease, delay: delay + i * 0.02 }}
+          transition={{ duration: 0.24, ease, delay: delay + i * 0.012 }}
         >
           {word}
         </motion.span>
@@ -252,7 +252,7 @@ const PhilosophySection: React.FC = () => {
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 2 }}
+                  transition={{ duration: 1.2 }}
                 />
               </pattern>
             </defs>
@@ -289,7 +289,7 @@ const PhilosophySection: React.FC = () => {
         <RevealText>
           <H2 className="mb-4 text-white">Our Philosophy</H2>
         </RevealText>
-        <FadeUp delay={0.2}>
+        <FadeUp delay={0.12}>
           <Paragraph className="text-white leading-relaxed">
             At Futura Identities, our mission is to deliver high-quality
             architectural elements while providing an exceptional client
@@ -308,20 +308,20 @@ const PhilosophySection: React.FC = () => {
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease }}
+            transition={{ duration: 0.6, ease }}
           >
             {/* Animated border overlay */}
             <AnimatedBorder
-              delay={0.3}
+              delay={0.18}
               className="absolute left-0 top-0 w-0.5 bg-theme h-full"
             />
 
             {philosophyPoints.map((point, index) => (
-              <FadeUp key={index} delay={0.4 + index * 0.2}>
+              <FadeUp key={index} delay={0.24 + index * 0.12}>
                 <StaggerParagraph
                   text={point.content}
                   className="leading-relaxed text-white opacity-70 font-light"
-                  delay={0.5 + index * 0.2}
+                  delay={0.3 + index * 0.12}
                 />
               </FadeUp>
             ))}
@@ -332,7 +332,7 @@ const PhilosophySection: React.FC = () => {
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease, delay: 0.8 }}
+              transition={{ duration: 0.5, ease, delay: 0.48 }}
               style={{ originX: 0 }}
             />
           </motion.div>
@@ -343,14 +343,14 @@ const PhilosophySection: React.FC = () => {
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease, delay: 0.2 }}
+            transition={{ duration: 0.6, ease, delay: 0.12 }}
           >
             <div className="relative aspect-[4/3] w-full">
-              <ImageReveal delay={0.4} direction="right">
+              <ImageReveal delay={0.24} direction="right">
                 <motion.div
                   style={{ y: imageY }}
                   whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.3 }}
                   className="relative"
                 >
                   <Image
@@ -366,14 +366,14 @@ const PhilosophySection: React.FC = () => {
                     className="absolute -inset-4 bg-theme/0 group-hover:bg-theme/10 blur-2xl -z-10"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.3 }}
                   />
                 </motion.div>
               </ImageReveal>
 
               {/* The Vertical 'OUR PHILOSOPHY' Text Overlay */}
               <div className="absolute top-[190px] -right-4 h-full w-0 hidden md:flex items-start justify-start">
-                <RotatingText text="Our Philosophy" delay={0.6} />
+                <RotatingText text="Our Philosophy" delay={0.36} />
               </div>
 
             </div>
@@ -387,12 +387,12 @@ const PhilosophySection: React.FC = () => {
             initial={{ opacity: 0, y: 40, rotate: -5 }}
             whileInView={{ opacity: 1, y: 0, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease, delay: 0.5 }}
+            transition={{ duration: 0.6, ease, delay: 0.3 }}
           >
-            <ImageReveal delay={0.7} direction="up">
+            <ImageReveal delay={0.42} direction="up">
               <motion.div
                 whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
               >
                 <Image
                   src={smallImage}
@@ -407,7 +407,7 @@ const PhilosophySection: React.FC = () => {
                   className="absolute inset-0 border-2 border-theme/30"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.18 }}
                 />
               </motion.div>
             </ImageReveal>

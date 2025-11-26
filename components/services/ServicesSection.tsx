@@ -202,7 +202,7 @@ const RotatingText: React.FC<{
         className="opacity-50"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 0.5 } : {}}
-        transition={{ duration: 0.4, delay: delay + 0.2 }}
+        transition={{ duration: 0.4, delay: delay + 0.12 }}
       >
         {text}
       </motion.span>
@@ -210,7 +210,7 @@ const RotatingText: React.FC<{
         className="bg-theme w-12 h-0.5 inline-block"
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.5, ease, delay: delay + 0.4 }}
+        transition={{ duration: 0.5, ease, delay: delay + 0.24 }}
         style={{ originX: 0 }}
       />
     </motion.p>
@@ -247,8 +247,8 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
+        staggerChildren: 0.09,
+        delayChildren: 0.06,
       },
     },
   };
@@ -288,7 +288,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
       transition: {
         duration: 0.5,
         ease: [0.34, 1.56, 0.64, 1],
-        delay: 0.2,
+        delay: 0.12,
       },
     },
   };
@@ -332,7 +332,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
 
             <div className="relative overflow-hidden">
               <ImageReveal
-                delay={0.2}
+                delay={0.12}
                 direction={isLeftLayout ? "left" : "right"}
               >
                 <motion.div
@@ -355,7 +355,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
                 } w-14 bg-theme`}
                 initial={{ height: 0 }}
                 animate={isInView ? { height: "6rem" } : { height: 0 }}
-                transition={{ duration: 0.5, ease, delay: 0.3 }}
+                transition={{ duration: 0.5, ease, delay: 0.18 }}
               />
             </div>
           </motion.div>
@@ -366,16 +366,16 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
             variants={textVariants}
           >
             <div>
-              <RevealText delay={0.2}>
+              <RevealText delay={0.12}>
                 <H2 className="mb-6">{subtitle}</H2>
               </RevealText>
 
               {/* Description Block with Animated Border */}
-              <FadeUp delay={0.3}>
+              <FadeUp delay={0.18}>
                 <div className="flex border-l-4 border-theme pl-6 mb-8 max-w-lg relative">
                   {/* Animated border overlay */}
                   <AnimatedBorder
-                    delay={0.4}
+                    delay={0.24}
                     className="absolute left-0 top-0 w-0.5 bg-theme"
                   />
 
@@ -388,9 +388,9 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
 
             {/* Small Optional Image with Enhanced Effects */}
             {smallImageUrl && (
-              <FadeUp delay={0.5} className="overflow-hidden">
+              <FadeUp delay={0.3} className="overflow-hidden">
                 <ImageReveal
-                  delay={0.4}
+                  delay={0.24}
                   direction={isLeftLayout ? "right" : "left"}
                 >
                   <motion.div
@@ -435,7 +435,7 @@ const ServicesSection: React.FC = () => {
           <H2 className="text-theme">Our Services</H2>
         </RevealText>
       </div>
-      <div className="sm:mb-10">
+      <div>
         {serviceBlocks.map((block, index) => (
           <ServiceBlock key={block.id} content={block} index={index} />
         ))}

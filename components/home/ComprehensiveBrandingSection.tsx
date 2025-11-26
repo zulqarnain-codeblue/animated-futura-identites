@@ -124,7 +124,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+          transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -147,7 +147,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>

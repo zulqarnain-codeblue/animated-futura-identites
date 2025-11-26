@@ -122,7 +122,7 @@ const RevealText: React.FC<{
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -145,7 +145,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -213,14 +213,14 @@ export default function TestimonialsSection() {
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.2, ease }}
+        transition={{ duration: 0.7, ease }}
       />
       <motion.div
         className="absolute left-0 bottom-10 w-40 h-40 bg-[#F7E1CB] rounded-full hidden sm:block"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.2, ease, delay: 0.2 }}
+        transition={{ duration: 0.7, ease, delay: 0.12 }}
       />
 
       {/* Section Header */}
@@ -228,7 +228,7 @@ export default function TestimonialsSection() {
         <RevealText delay={0}>
           <SubHeading className="mb-3">TESTIMONIALS</SubHeading>
         </RevealText>
-        <RevealText delay={0.1}>
+        <RevealText delay={0.06}>
           <H2>
             What Our Customers Say
             <br />
@@ -251,8 +251,8 @@ export default function TestimonialsSection() {
               exit="exit"
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.5 },
-                scale: { duration: 0.5 },
+                opacity: { duration: 0.3 },
+                scale: { duration: 0.3 },
               }}
             >
               <motion.img
@@ -262,7 +262,7 @@ export default function TestimonialsSection() {
                 height={617}
                 className="w-full h-auto"
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.24 }}
               />
             </motion.div>
           </AnimatePresence>
@@ -280,7 +280,7 @@ export default function TestimonialsSection() {
               exit="exit"
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.5 },
+                opacity: { duration: 0.3 },
               }}
             >
               {/* Stars */}
@@ -293,8 +293,8 @@ export default function TestimonialsSection() {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{
-                        delay: i * 0.1 + 0.3,
-                        duration: 0.3,
+                        delay: i * 0.06 + 0.18,
+                        duration: 0.18,
                         ease: "backOut",
                       }}
                     >
@@ -320,7 +320,7 @@ export default function TestimonialsSection() {
                   className="absolute bottom-6 translate-y-1/2 right-3 font-bold inline-block text-right"
                   initial={{ opacity: 0, rotate: -20 }}
                   animate={{ opacity: 1, rotate: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                  transition={{ delay: 0.3, duration: 0.36 }}
                 >
                   <img
                     src="/icons/quotes.webp"
@@ -338,7 +338,7 @@ export default function TestimonialsSection() {
 
       {/* Pagination + Arrows */}
       <FadeUp
-        delay={0.4}
+        delay={0.24}
         className="flex items-center justify-center lg:justify-start gap-0 mt-12 relative z-10 max-w-6xl mx-auto sm:translate-x-16"
       >
         {/* Prev */}
@@ -356,7 +356,7 @@ export default function TestimonialsSection() {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           />
 
           <motion.span
@@ -365,7 +365,7 @@ export default function TestimonialsSection() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.18 }}
           >
             <span className="text-theme-600 text-xl">
               {String(index + 1).padStart(2, "0")}
@@ -381,7 +381,7 @@ export default function TestimonialsSection() {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           />
         </div>
 
