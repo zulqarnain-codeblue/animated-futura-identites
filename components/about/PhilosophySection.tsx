@@ -297,15 +297,6 @@ const PhilosophySection: React.FC = () => {
             excellence in every project we undertake.
           </Paragraph>
         </FadeUp>
-
-        {/* Animated underline */}
-        <motion.div
-          className="w-24 h-1 bg-theme mx-auto mt-6"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease, delay: 0.3 }}
-        />
       </div>
 
       {/* Main Content & Layout */}
@@ -385,21 +376,6 @@ const PhilosophySection: React.FC = () => {
                 <RotatingText text="Our Philosophy" delay={0.6} />
               </div>
 
-              {/* Corner decorations */}
-              <motion.div
-                className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-theme/60"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-              />
-              <motion.div
-                className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-theme/60"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 1 }}
-              />
             </div>
           </motion.div>
 

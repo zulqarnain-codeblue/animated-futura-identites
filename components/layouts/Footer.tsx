@@ -43,6 +43,7 @@ const Footer = () => {
                       alt="Futura Identities Logo"
                       width={150}
                       height={150}
+                      className="w-26 sm:w-[150px]"
                       priority
                     />
                   </Link>

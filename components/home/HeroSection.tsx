@@ -340,7 +340,7 @@ const HeroSection: React.FC = () => {
       //   background:
       //     "radial-gradient(circle at 50% 50%, rgba(81, 46, 9, 1) 0%, rgba(0, 0, 0, 1) 50%)",
       // }}
-      className="overflow-hidden sm:pt-10 md:pt-30 lg:pt-40"
+      className="overflow-hidden sm:pt-10 md:pt-30 lg:pt-40 bg-black"
     >
       <motion.div
         ref={sectionRef}
