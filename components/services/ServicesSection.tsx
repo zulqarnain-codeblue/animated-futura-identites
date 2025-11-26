@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { ServiceContent } from "@/types/service";
+import servicesList from "@/data/services";
 import { H2, H3, Paragraph } from "../ui/Typography";
 import Image from "next/image";
 
@@ -56,14 +57,14 @@ const RevealText: React.FC<{
   delay?: number;
 }> = ({ children, delay = 0 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <div ref={ref} className="overflow-hidden">
       <motion.div
         initial={{ y: "100%" }}
         animate={isInView ? { y: 0 } : { y: "100%" }}
-        transition={{ duration: 0.8, ease, delay }}
+        transition={{ duration: 0.5, ease, delay }}
       >
         {children}
       </motion.div>
@@ -78,7 +79,7 @@ const FadeUp: React.FC<{
   className?: string;
 }> = ({ children, delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -86,7 +87,7 @@ const FadeUp: React.FC<{
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>
@@ -100,7 +101,7 @@ const ImageReveal: React.FC<{
   direction?: "left" | "right" | "up";
 }> = ({ children, delay = 0, direction = "up" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   const clipPaths = {
     left: {
@@ -119,12 +120,12 @@ const ImageReveal: React.FC<{
       ref={ref}
       initial={{ clipPath: clipPaths[direction].hidden }}
       animate={isInView ? { clipPath: clipPaths[direction].visible } : {}}
-      transition={{ duration: 1.2, ease, delay }}
+      transition={{ duration: 0.7, ease, delay }}
     >
       <motion.div
         initial={{ scale: 1.1 }}
         animate={isInView ? { scale: 1 } : { scale: 1.1 }}
-        transition={{ duration: 1.4, ease, delay }}
+        transition={{ duration: 0.8, ease, delay }}
       >
         {children}
       </motion.div>
@@ -166,7 +167,7 @@ const AnimatedBorder: React.FC<{
   className?: string;
 }> = ({ delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -174,7 +175,7 @@ const AnimatedBorder: React.FC<{
       className={className}
       initial={{ scaleY: 0 }}
       animate={isInView ? { scaleY: 1 } : {}}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
       style={{ originY: 0 }}
     />
   );
@@ -195,13 +196,13 @@ const RotatingText: React.FC<{
       style={{ transformOrigin: "0 0" }}
       initial={{ opacity: 0, x: -20 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease, delay }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       <motion.span
         className="opacity-50"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 0.5 } : {}}
-        transition={{ duration: 0.6, delay: delay + 0.2 }}
+        transition={{ duration: 0.4, delay: delay + 0.2 }}
       >
         {text}
       </motion.span>
@@ -209,7 +210,7 @@ const RotatingText: React.FC<{
         className="bg-theme w-12 h-0.5 inline-block"
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.8, ease, delay: delay + 0.4 }}
+        transition={{ duration: 0.5, ease, delay: delay + 0.4 }}
         style={{ originX: 0 }}
       />
     </motion.p>
@@ -238,7 +239,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
   const isLeftLayout = layout === "left";
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   // Container animation with stagger
   const containerVariants = {
@@ -259,7 +260,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9,
+        duration: 0.6,
         ease,
       },
     },
@@ -272,7 +273,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9,
+        duration: 0.6,
         ease,
       },
     },
@@ -285,9 +286,9 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
       opacity: 1,
       scaleY: 1,
       transition: {
-        duration: 0.7,
+        duration: 0.5,
         ease: [0.34, 1.56, 0.64, 1],
-        delay: 0.3,
+        delay: 0.2,
       },
     },
   };
@@ -336,7 +337,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <ParallaxImage
                     src={mainImageUrl}
@@ -354,7 +355,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
                 } w-14 bg-theme`}
                 initial={{ height: 0 }}
                 animate={isInView ? { height: "6rem" } : { height: 0 }}
-                transition={{ duration: 0.8, ease, delay: 0.4 }}
+                transition={{ duration: 0.5, ease, delay: 0.3 }}
               />
             </div>
           </motion.div>
@@ -395,7 +396,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
                   <motion.div
                     className="-mt-24 ml-10 sm:mt-0 sm:ml-0 w-1/2 max-w-[350px] relative overflow-hidden"
                     whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <Image
                       src={smallImageUrl}
@@ -410,7 +411,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
                       className="absolute inset-0 bg-black/5"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     />
                   </motion.div>
                 </ImageReveal>
@@ -425,96 +426,7 @@ const ServiceBlock: React.FC<ServiceBlockProps> = ({ content, index }) => {
 
 // --- Parent Component ---
 const ServicesSection: React.FC = () => {
-  const serviceBlocks: ServiceContent[] = [
-    {
-      id: 1,
-      title: "Branding & Signage Solutions",
-      subtitle: "Brand Rollouts",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams  rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernatur",
-      mainImageUrl: "/images/Rounded Rectangle 1.webp",
-      smallImageUrl: "/images/Rectangle 53.webp",
-      layout: "left",
-      tag: "Project Management",
-    },
-    {
-      id: 2,
-      title: "Design & Engineering",
-      subtitle: "Project Management",
-      description:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed.",
-      mainImageUrl: "/images/Rectangle 52.webp",
-      smallImageUrl: "/images/Rectangle 53.webp",
-      layout: "right",
-      tag: "Project Management",
-    },
-    {
-      id: 3,
-      title: "Design & Engineering",
-      subtitle: "Design & Engineering",
-      description:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed.",
-      mainImageUrl: "/images/Rectangle 55.webp",
-      smallImageUrl: "/images/Rectangle 57.webp",
-      layout: "left",
-      tag: "Design & Engineering",
-    },
-    {
-      id: 4,
-      title: "Design & Engineering",
-      subtitle: "Permits And Quotes",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 63.webp",
-      smallImageUrl: "/images/Rectangle 57.webp",
-      layout: "right",
-      tag: "Permits And Quotes",
-    },
-    {
-      id: 5,
-      title: "Design & Engineering",
-      subtitle: "Our Technology",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 66.webp",
-      smallImageUrl: "/images/Rectangle 65.webp",
-      layout: "left",
-      tag: "Our Technology",
-    },
-    {
-      id: 6,
-      title: "Design & Engineering",
-      subtitle: "Fabrication",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 71.webp",
-      smallImageUrl: "/images/Rectangle 69.webp",
-      layout: "right",
-      tag: "Fabrication",
-    },
-    {
-      id: 7,
-      title: "Design & Engineering",
-      subtitle: "Installation",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 74.webp",
-      smallImageUrl: "/images/Rectangle 73.webp",
-      layout: "left",
-      tag: "INSTALLATION",
-    },
-    {
-      id: 8,
-      title: "Design & Engineering",
-      subtitle: "After-Sales Support",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 71.webp",
-      smallImageUrl: "/images/Rectangle 69.webp",
-      layout: "right",
-      tag: "after sales support",
-    },
-  ];
+  const serviceBlocks = [...servicesList];
 
   return (
     <section className="bg-white px-10">

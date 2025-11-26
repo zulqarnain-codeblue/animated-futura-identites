@@ -1,5 +1,12 @@
 "use client";
-import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { FiX, FiArrowUpRight } from "react-icons/fi";
 import { CgMenuRightAlt } from "react-icons/cg";
 import Image from "next/image";
@@ -22,7 +29,10 @@ const MENU_ITEMS = [
   { name: "What We Do", href: "/what-we-do" },
 ] as const;
 
-const CONTACT_INFO = { phone: "+12153333337", email: "sales@futurasigns.com" } as const;
+const CONTACT_INFO = {
+  phone: "+12153333337",
+  email: "sales@futurasigns.com",
+} as const;
 
 // Smooth easing
 const ease = [0.76, 0, 0.24, 1] as const;
@@ -102,7 +112,10 @@ const Magnetic: React.FC<{ children: React.ReactNode; strength?: number }> = ({
     y.set((e.clientY - rect.top - rect.height / 2) * strength);
   };
 
-  const reset = () => { x.set(0); y.set(0); };
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
     <motion.div
@@ -130,7 +143,7 @@ const SplitText: React.FC<{
   if (isMobile) {
     return <span className={className}>{text}</span>;
   }
-  
+
   const words = text.split(" ");
 
   return (
@@ -198,7 +211,12 @@ const MenuItem: React.FC<{
       onMouseEnter={() => setHoveredItem(index)}
       onMouseLeave={() => setHoveredItem(null)}
     >
-      <Link href={item.href} onClick={onClose} className="group relative block py-2" aria-label="Menu Item">
+      <Link
+        href={item.href}
+        onClick={onClose}
+        className="group relative block py-2"
+        aria-label="Menu Item"
+      >
         <motion.div
           className="flex items-center gap-4 will-change-transform" // Added will-change-transform
           animate={{ x: isHovered ? 20 : 0, opacity: isOtherHovered ? 0.3 : 1 }}
@@ -282,25 +300,35 @@ const BackgroundShapes: React.FC = () => {
       <motion.div
         className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-3xl will-change-transform" // Added will-change-transform
         animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-        transition={{ 
-          rotate: { duration: 30 * slowDown, repeat: Infinity, ease: "linear" }, 
-          scale: { duration: 8 * slowDown, repeat: Infinity } 
+        transition={{
+          rotate: { duration: 30 * slowDown, repeat: Infinity, ease: "linear" },
+          scale: { duration: 8 * slowDown, repeat: Infinity },
         }}
       />
       <motion.div
         className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-orange-600/10 to-transparent blur-3xl will-change-transform" // Added will-change-transform
         animate={{ rotate: -360, scale: [1, 1.2, 1] }}
-        transition={{ 
-          rotate: { duration: 25 * slowDown, repeat: Infinity, ease: "linear" }, 
-          scale: { duration: 6 * slowDown, repeat: Infinity } 
+        transition={{
+          rotate: { duration: 25 * slowDown, repeat: Infinity, ease: "linear" },
+          scale: { duration: 6 * slowDown, repeat: Infinity },
         }}
       />
 
       {/* Grid pattern */}
       <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
         <defs>
-          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1" />
+          <pattern
+            id="grid"
+            width="60"
+            height="60"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 60 0 L 0 0 0 60"
+              fill="none"
+              stroke="white"
+              strokeWidth="1"
+            />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -309,7 +337,33 @@ const BackgroundShapes: React.FC = () => {
   );
 };
 
-// Contact section
+// Define social links with real gradient hover backgrounds
+const SOCIAL_LINKS = [
+  {
+    key: "facebook",
+    icon: <FaFacebookF size={18} />,
+    href: "https://facebook.com",
+    gradient: "hover:bg-[#1877F2] shadow-[#1877F2]", // Solid Facebook blue
+    label: "Facebook",
+  },
+  {
+    key: "linkedin",
+    icon: <FaLinkedinIn size={18} />,
+    href: "https://linkedin.com",
+    gradient: "hover:bg-[#0A66C2] shadow-[#0A66C2]", // Solid LinkedIn blue
+    label: "LinkedIn",
+  },
+  {
+    key: "instagram",
+    icon: <FaInstagram size={20} />,
+    href: "https://instagram.com",
+    gradient:
+      "hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-500 hover:to-orange-400 hover:bg-clip-padding hover:shadow-[#c13584]",
+    label: "Instagram",
+  },
+] as const;
+
+// Updated Contact Section with Gradient Hover Backgrounds
 const ContactSection: React.FC = () => (
   <motion.div
     className="sm:absolute bottom-12 left-0 right-0 px-8 lg:px-16"
@@ -321,11 +375,12 @@ const ContactSection: React.FC = () => (
       <div className="flex flex-col md:flex-row gap-5 sm:gap-8 md:gap-16">
         <RevealMask delay={1.1}>
           <div>
-            <p className="text-gray-500 text-xs uppercase tracking-[0.2em] mb-2">Phone</p>
+            <p className="text-gray-500 text-xs uppercase tracking-[0.2em] mb-2">
+              Phone
+            </p>
             <Link
               href={`tel:${CONTACT_INFO.phone}`}
               className="text-white text-md sm:text-xl font-semibold hover:text-theme transition-colors"
-              aria-label="Contact phone number"
             >
               {CONTACT_INFO.phone}
             </Link>
@@ -333,11 +388,12 @@ const ContactSection: React.FC = () => (
         </RevealMask>
         <RevealMask delay={1.2}>
           <div>
-            <p className="text-gray-500 text-xs uppercase tracking-[0.2em] mb-2">Email</p>
+            <p className="text-gray-500 text-xs uppercase tracking-[0.2em] mb-2">
+              Email
+            </p>
             <Link
               href={`mailto:${CONTACT_INFO.email}`}
               className="text-white text-md sm:text-xl font-semibold hover:text-theme transition-colors"
-              aria-label="Email address"
             >
               {CONTACT_INFO.email}
             </Link>
@@ -345,18 +401,48 @@ const ContactSection: React.FC = () => (
         </RevealMask>
       </div>
 
-      {/* Social hint */}
+      {/* SOCIAL ICONS WITH GRADIENT HOVER BACKGROUND */}
       <RevealMask delay={1.3}>
-        <div className="flex items-center gap-4">
-          {["Fb", "Tw", "Ig", "Li"].map((s, i) => (
-            <Magnetic key={s} strength={0.5}>
+        <div className="flex items-center gap-5">
+          {SOCIAL_LINKS.map((social, i) => (
+            <Magnetic key={social.key} strength={0.5}>
               <motion.a
-                href="#"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-theme hover:text-theme transition-colors text-sm"
-                whileHover={{ scale: 1.1 }}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow us on ${social.label}`}
+                className={`
+                  relative w-12 h-12 rounded-full border-2 border-white/20 
+                  flex items-center justify-center text-white/70
+                  overflow-hidden transition-all duration-500
+                  group backdrop-blur-sm
+                  ${social.gradient}
+                  hover:border-transparent hover:shadow-2xl
+                `}
+                whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.4 + i * 0.1, duration: 0.6 }}
               >
-                {s}
+                {/* Icon with white → colored text on hover */}
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                  {social.icon}
+                </span>
+
+                {/* Optional: subtle inner glow */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-40"
+                  initial={{ scale: 0.8 }}
+                  whileHover={{ scale: 1.3 }}
+                  transition={{ duration: 0.4 }}
+                  style={{
+                    background:
+                      social.key === "instagram"
+                        ? "radial-gradient(circle at 30% 70%, rgba(255,255,255,0.8), transparent 50%)"
+                        : "radial-gradient(circle, rgba(255,255,255,0.6), transparent 60%)",
+                  }}
+                />
               </motion.a>
             </Magnetic>
           ))}
@@ -375,8 +461,14 @@ const Header: React.FC = () => {
 
   const { isHome, isProductDetail, showWhiteLogo } = useMemo(() => {
     const isHome = pathname === "/";
-    const isProductDetail = pathname.startsWith("/products-capabilities/") && pathname !== "/products-capabilities";
-    return { isHome, isProductDetail, showWhiteLogo: (isHome || isProductDetail) && !isScrolled };
+    const isProductDetail =
+      pathname.startsWith("/products-capabilities/") &&
+      pathname !== "/products-capabilities";
+    return {
+      isHome,
+      isProductDetail,
+      showWhiteLogo: (isHome || isProductDetail) && !isScrolled,
+    };
   }, [pathname, isScrolled]);
 
   useEffect(() => {
@@ -384,7 +476,10 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       if (!ticking) {
         ticking = true;
-        requestAnimationFrame(() => { setIsScrolled(window.scrollY > 20); ticking = false; });
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -395,13 +490,20 @@ const Header: React.FC = () => {
     // Only disable scroll on desktop if menu is open. On mobile, it's often needed.
     // However, keeping it simple:
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isMenuOpen]);
 
   const toggleMenu = useCallback(() => setIsMenuOpen((p) => !p), []);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
-  const textColor = isHome && !isScrolled ? "text-white" : !isProductDetail ? "text-black" : "text-white";
+  const textColor =
+    isHome && !isScrolled
+      ? "text-white"
+      : !isProductDetail
+      ? "text-black"
+      : "text-white";
 
   return (
     <>
@@ -411,7 +513,9 @@ const Header: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 py-1 transition-colors duration-500 z-70 ${
-          isScrolled ? "bg-white/80 backdrop-blur-xl shadow-2xl" : "bg-transparent"
+          isScrolled
+            ? "bg-white/80 backdrop-blur-xl shadow-2xl"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-[1450px] mx-auto px-6 py-1 sm:py-4">
@@ -419,9 +523,16 @@ const Header: React.FC = () => {
             {/* Logo */}
             <Link href="/" aria-label="Home">
               <Magnetic strength={0.2}>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Image
-                    src={showWhiteLogo ? "/logos/logo.svg" : "/logos/black-logo.webp"}
+                    src={
+                      showWhiteLogo
+                        ? "/logos/logo.svg"
+                        : "/logos/black-logo.webp"
+                    }
                     alt="Logo"
                     width={150}
                     height={150}
@@ -437,7 +548,9 @@ const Header: React.FC = () => {
               <motion.button
                 onClick={toggleMenu}
                 className={`flex items-center gap-3 pl-5 py-2 pr-2 rounded-full transition-colors duration-300 cursor-pointer ${
-                  isMenuOpen ? "bg-theme text-black" : `hover:bg-white/10 ${textColor}`
+                  isMenuOpen
+                    ? "bg-theme text-black"
+                    : `hover:bg-white/10 ${textColor}`
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -452,7 +565,9 @@ const Header: React.FC = () => {
                 </motion.span>
 
                 <motion.div
-                  className={`p-2.5 rounded-full ${isMenuOpen ? "bg-black" : "bg-theme"}`}
+                  className={`p-2.5 rounded-full ${
+                    isMenuOpen ? "bg-black" : "bg-theme"
+                  }`}
                   animate={{ rotate: isMenuOpen ? 180 : 0 }}
                   transition={{ duration: 0.4, ease }}
                 >
@@ -483,7 +598,7 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <>
             {/* CONDITIONAL CURSOR RENDER FOR PERFORMANCE */}
-            {!isMobile && <Cursor isVisible={hoveredItem !== null} />} 
+            {!isMobile && <Cursor isVisible={hoveredItem !== null} />}
 
             {/* Background layers */}
             <motion.div

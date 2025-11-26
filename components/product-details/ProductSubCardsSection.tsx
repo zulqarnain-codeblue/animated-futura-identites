@@ -68,7 +68,7 @@ export default function ProductSubCardsSection({
 }: ProductHeroSectionProps) {
   const { subtitle, products } = content;
 
-  if (!products) {
+  if (!products?.length) {
     return (
       <div className="py-40 text-center">
         <h1 className="text-3xl font-semibold">Product Not Found</h1>

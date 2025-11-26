@@ -1,358 +1,299 @@
 "use client";
 import React, { useState } from "react";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaYoutube,
-  FaWhatsapp,
-  FaInstagram,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
-import { IoMdArrowUp, IoMdSend } from "react-icons/io";
-import { IoIosSend } from "react-icons/io";
+import { IoMdArrowUp, IoIosSend } from "react-icons/io";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+// Reusable Premium Hover Link — Same DNA as your Header MenuItem
+const PremiumLink = ({
+  href,
+  children,
+  index,
+  className = "",
+}: {
+  href: string;
+  children: string;
+  index: number;
+  className?: string;
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.li
+      className="relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Link href={href} className={`group relative block py-1.5 ${className}`}>
+        <motion.div
+          className="flex items-center gap-4"
+          animate={{ x: isHovered ? 16 : 0 }}
+          transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+        >
+          {/* Text Layers */}
+          <div className="relative overflow-hidden flex-1">
+            {/* Base Text */}
+            <motion.div
+              className="text-gray-300 group-hover:text-white transition-colors"
+              animate={{ y: isHovered ? "-100%" : 0 }}
+              transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+            >
+              {children}
+            </motion.div>
+
+            {/* Theme Color Text */}
+            <motion.div
+              className="absolute inset-0 text-theme font-medium"
+              initial={{ y: "100%" }}
+              animate={{ y: isHovered ? 0 : "100%" }}
+              transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+            >
+              {children}
+            </motion.div>
+          </div>
+
+          {/* Arrow */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{
+              opacity: isHovered ? 1 : 0,
+              x: isHovered ? 0 : -20,
+            }}
+            transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
+            className="ml-auto"
+          >
+            <IoMdArrowUp size={20} className="text-theme rotate-45" />
+          </motion.div>
+        </motion.div>
+
+        {/* Hover Theme Line */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-px bg-theme"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+          style={{ originX: 0 }}
+        />
+      </Link>
+    </motion.li>
+  );
+};
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0.7, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0.7, 0.85], [0, 1]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Newsletter signup:", email);
+    console.log("Subscribed:", email);
     setEmail("");
   };
 
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const sitemapLinks = [
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Our Portfolio", href: "/products-capabilities" },
+    { name: "What We Do", href: "/what-we-do" },
+    { name: "Who We Are", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
+
+  const servicesLinks = [
+    "Project Management",
+    "Design & Branding",
+    "Engineering",
+    "Permits",
+    "Manufacturing",
+    "Installation",
+    "After-Sales Support",
+  ].map((s) => ({ name: s, href: "/services" }));
+
+  const productsLinks = [
+    "QRS Solution",
+    "Exterior Signage",
+    "Interior Signage",
+    "Architectural Elements",
+    "ADA Solution",
+    "Lighting Solutions",
+    "Fleet Branding",
+    "Wayfinding Signs",
+    "Large Format Printing",
+  ].map((p) => ({
+    name: p,
+    href: `/products-capabilities/${p
+      .toLowerCase()
+      .replace(/ & /g, "-")
+      .replace(/ /g, "-")}`,
+  }));
+
   return (
-    <footer className="bg-black text-gray-300">
-      {/* Main Footer Content */}
-      <div className="max-w-[1450px] mx-auto px-8 py-12 sm:py-16">
-        {/* Logo and Social Media */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 pb-8 border-b border-gray-800">
-          <div className="mb-8 md:mb-0">
-            <div className="w-56">
-              <div className="flex items-center gap-4">
-                <div>
-                  <Link href="/" aria-label="Futura Identities Logo">
-                    <Image
-                      src="/logos/logo.svg"
-                      alt="Futura Identities Logo"
-                      width={150}
-                      height={150}
-                      className="w-26 sm:w-[150px]"
-                      priority
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+    <footer className="bg-black text-gray-300 relative overflow-hidden">
+      {/* Subtle Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-theme/5 via-transparent to-transparent opacity-50" />
 
-          {/* Social Media Icons */}
-          <div className="flex flex-wrap gap-3 sm:gap-12">
-            <a
-              href="#"
-              className="text-white hover:text-white transition-colors flex gap-1.5 sm:gap-3 uppercase"
-              aria-label="Facebook"
-            >
-              <FaFacebookF size={20} />
-              <span>Facebook</span>
-            </a>
-            <a
-              href="#"
-              className="text-white hover:text-white transition-colors flex gap-1.5 sm:gap-3 uppercase"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn size={20} />
-              <span>LinkedIn</span>
-            </a>
-            <a
-              href="#"
-              className="text-white hover:text-white transition-colors flex gap-1.5 sm:gap-3 uppercase"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={20} />
-              <span>Instagram</span>
-            </a>
-          </div>
-        </div>
+      <div className="max-w-[1450px] mx-auto px-8 py-16 relative z-10">
+        {/* Logo + Social */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 pb-8 border-b border-gray-800"
+        >
+          <Link href="/">
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Image
+                src="/logos/logo.svg"
+                alt="Futura Identities"
+                width={150}
+                height={150}
+                className="w-32 sm:w-[150px]"
+                priority
+              />
+            </motion.div>
+          </Link>
 
-        {/* Footer Links Grid */}
+          <div className="flex gap-10 mt-8 md:mt-0">
+            {[
+              { Icon: FaFacebookF, label: "Facebook" },
+              { Icon: FaLinkedinIn, label: "LinkedIn" },
+              { Icon: FaInstagram, label: "Instagram" },
+            ].map((s, i) => (
+              <motion.a
+                key={s.label}
+                href="#"
+                whileHover={{ scale: 1.2, y: -4 }}
+                className="text-white uppercase text-sm tracking-wider flex items-center gap-2"
+              >
+                <s.Icon size={20} />
+                <span className="hidden sm:block">{s.label}</span>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Links Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Sitemap */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6 relative inline-block">
+            <h3 className="text-white font-semibold text-lg mb-8 relative inline-block">
               Sitemap
-              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-theme"></div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 48 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="absolute -bottom-2 left-0 h-1 bg-theme"
+              />
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Our Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/what-we-do"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  What We Do
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Who We Are
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
+            <ul className="space-y-2">
+              {sitemapLinks.map((link, i) => (
+                <PremiumLink key={link.name} href={link.href} index={i}>
+                  {link.name}
+                </PremiumLink>
+              ))}
             </ul>
           </div>
 
-          {/* Our Services */}
+          {/* Services */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6 relative inline-block">
+            <h3 className="text-white font-semibold text-lg mb-8 relative inline-block">
               Our Services
-              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-theme"></div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 48 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="absolute -bottom-2 left-0 h-1 bg-theme"
+              />
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Project Management
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Design & Branding
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Engineering
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Permits
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Manufacturing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Installation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  After-Sales Support
-                </Link>
-              </li>
+            <ul className="space-y-2">
+              {servicesLinks.map((link, i) => (
+                <PremiumLink key={link.name} href={link.href} index={i}>
+                  {link.name}
+                </PremiumLink>
+              ))}
             </ul>
           </div>
 
-          {/* Products & Capabilities */}
+          {/* Products */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6 relative inline-block">
+            <h3 className="text-white font-semibold text-lg mb-8 relative inline-block">
               Products & Capabilities
-              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-theme"></div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 48 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="absolute -bottom-2 left-0 h-1 bg-theme"
+              />
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/products-capabilities/qrs-solution"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  QRS Solution
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/exterior-signage"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Exterior Signage
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/interior-signage"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Interior Signage
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/architectural-elements"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Architectural Elements
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/ada-solution"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  ADA Solution
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/lighting-solutions"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Lighting Solutions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/fleet-branding"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Fleet Branding
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/wayfinding-signs"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Wayfinding Signs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products-capabilities/large-format-printing"
-                  aria-label="Link"
-                  className="hover:text-white transition-colors"
-                >
-                  Large Format Printing
-                </Link>
-              </li>
+            <ul className="space-y-2">
+              {productsLinks.map((link, i) => (
+                <PremiumLink key={link.name} href={link.href} index={i}>
+                  {link.name}
+                </PremiumLink>
+              ))}
             </ul>
           </div>
 
-          {/* Contact US */}
+          {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6 relative inline-block">
+            <h3 className="text-white font-semibold text-lg mb-8 relative inline-block">
               Contact US
-              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-theme"></div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 48 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="absolute -bottom-2 left-0 h-1 bg-theme"
+              />
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MdEmail className="text-white  mt-1 flex-shrink-0" size={20} />
+            <ul className="space-y-6">
+              <li className="flex items-center gap-4">
+                <MdEmail size={20} className="text-theme" />
                 <a
                   href="mailto:sales@futurasigns.com"
-                  className="hover:text-white transition-colors"
-                  aria-label="Email address"
+                  className="hover:text-theme transition-colors"
                 >
                   sales@futurasigns.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MdPhone className="text-white mt-1 flex-shrink-0" size={20} />
+              <li className="flex items-center gap-4">
+                <MdPhone size={20} className="text-theme" />
                 <a
-                  href="tel:+12345678910"
-                  className="text-theme font-semibold text-2xl hover:text-theme-400 transition-colors"
-                  aria-label="Phone number"
+                  href="tel:+12153333337"
+                  className="text-theme font-bold text-xl"
                 >
-                  +12153333337
+                  +1 215 333 3337
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MdLocationOn
-                  className="text-gray-400 mt-1 flex-shrink-0"
-                  size={20}
-                />
-                <span> 101 E. Luzerne St. Philadelphia, PA</span>
+              <li className="flex items-start gap-4">
+                <MdLocationOn size={20} className="text-gray-500 mt-1" />
+                <span className="text-gray-400">
+                  101 E. Luzerne St. Philadelphia, PA
+                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="border-t border-gray-800 pt-12">
-          <div className="flex flex-col lg:flex-row sm:items-center justify-between gap-4 sm:gap-8">
-            <h3 className="text-white text-lg sm:text-2xl md:text-3xl font-semibold">
+        {/* Newsletter */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-800 pt-12"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+            <h3 className="text-white text-2xl md:text-3xl font-semibold">
               Subscribe To Our Newsletter
             </h3>
             <form
@@ -361,65 +302,57 @@ const Footer = () => {
             >
               <div className="relative flex-1 lg:min-w-[400px]">
                 <MdEmail
-                  className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"
                   size={20}
                 />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email address"
-                  className="w-full bg-white text-black pl-7.5 sm:pl-12 pr-4 py-3 sm:py-4 focus:outline-none"
+                  placeholder="Your email"
+                  className="w-full pl-14 pr-4 py-4 text-black focus:outline-none"
                   required
                 />
               </div>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="bg-theme hover:bg-theme-600 text-white px-3 sm:px-8 py-3 sm:py-4 font-semibold transition-colors flex items-center gap-2"
-                aria-label="Subscribe to newsletter"
+                className="bg-theme px-10 py-4 text-white font-bold flex items-center gap-2 cursor-pointer"
               >
-                SUBMIT
-                <IoIosSend size={24} />
-              </button>
+                Submit <IoIosSend size={22} />
+              </motion.button>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Footer Bottom */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © 2025 Futura Identities. All rights reserved
-          </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="#"
-              className="text-gray-500 hover:text-white text-sm transition-colors"
-              aria-label="Privacy Policy"
-            >
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© 2025 Futura Identities. All rights reserved</p>
+          <div className="flex gap-6">
+            <PremiumLink href="/privacy" index={0}>
               Privacy Policy
-            </a>
+            </PremiumLink>
             <span className="text-gray-700">•</span>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-white text-sm transition-colors"
-              aria-label="Terms & Conditions"
-            >
+            <PremiumLink href="/terms" index={1}>
               Terms & Conditions
-            </a>
+            </PremiumLink>
           </div>
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
-      <button
+      {/* Scroll to Top */}
+      <motion.button
+        style={{ y, opacity }}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 bg-theme hover:bg-theme-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50"
-        aria-label="Scroll to top"
+        className="fixed bottom-8 right-8 bg-theme text-white p-4 rounded-full shadow-2xl z-50 backdrop-blur-md border border-white/20 cursor-pointer"
+        whileHover={{ scale: 1.2, rotate: 360 }}
+        whileTap={{ scale: 0.9 }}
       >
-        <IoMdArrowUp size={24} />
-      </button>
+        <IoMdArrowUp size={28} />
+      </motion.button>
     </footer>
   );
 };

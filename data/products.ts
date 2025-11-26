@@ -259,6 +259,64 @@ export const productList: ProductContent[] = [
       },
     ],
   },
+  {
+    id: 8,
+    title: "Design & Engineering",
+    subtitle: "Fleet Branding",
+    slug: "fleet-branding",
+    description:
+      "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
+    mainImageUrl: "/images/Rectangle 31.webp",
+    smallImageUrl: "/images/Rectangle 32.webp",
+    layout: "right",
+    tag: "Fleet Branding",
+    products: [
+      {
+        id: 1,
+        title: "Backlit Panels",
+        image: "https://placehold.co/600x600/222/fff?text=Backlit",
+      },
+      {
+        id: 2,
+        title: "LED Modules",
+        image: "https://placehold.co/600x600/333/fff?text=LED+Modules",
+      },
+      {
+        id: 3,
+        title: "RGB Solutions",
+        image: "https://placehold.co/600x600/FD8000/fff?text=RGB",
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: "Design & Engineering",
+    subtitle: "Large Format Printing",
+    slug: "large-format-printing",
+    description:
+      "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
+    mainImageUrl: "/images/Rectangle 38.webp",
+    smallImageUrl: "/images/Rectangle 39.webp",
+    layout: "left",
+    tag: "Large Format Printing",
+    products: [
+      {
+        id: 1,
+        title: "Backlit Panels",
+        image: "https://placehold.co/600x600/222/fff?text=Backlit",
+      },
+      {
+        id: 2,
+        title: "LED Modules",
+        image: "https://placehold.co/600x600/333/fff?text=LED+Modules",
+      },
+      {
+        id: 3,
+        title: "RGB Solutions",
+        image: "https://placehold.co/600x600/FD8000/fff?text=RGB",
+      },
+    ],
+  },
 ];
 
 export default productList;

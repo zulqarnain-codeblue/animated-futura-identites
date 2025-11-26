@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { ProductContent } from "@/types/product";
 import { H2, H3, Paragraph, SubHeading } from "../ui/Typography";
+import productList from "@/data/products";
 import Image from "next/image";
 import NotchButton from "../ui/NotchButton";
 import {
@@ -21,7 +22,7 @@ const RevealText: React.FC<{
   delay?: number;
 }> = ({ children, delay = 0 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <div ref={ref} className="overflow-hidden">
@@ -43,7 +44,7 @@ const FadeUp: React.FC<{
   className?: string;
 }> = ({ children, delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -65,7 +66,7 @@ const ImageReveal: React.FC<{
   direction?: "left" | "right" | "up";
 }> = ({ children, delay = 0, direction = "up" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   const clipPaths = {
     left: {
@@ -138,7 +139,7 @@ const AnimatedBorder: React.FC<{
   className?: string;
 }> = ({ delay = 0, className }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
 
   return (
     <motion.div
@@ -204,7 +205,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
   const layoutClasses = isLeftLayout ? "md:flex-row" : "md:flex-row-reverse";
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "100px" });
 
   // Container animation with stagger
   const containerVariants = {
@@ -484,116 +485,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({ content, index }) => {
 
 // --- Parent Component ---
 const ProductsCapabilitiesSection: React.FC = () => {
-  const ProductBlocks: ProductContent[] = [
-    {
-      id: 1,
-      title: "Branding & Signage Solutions",
-      subtitle: "QRS Solution",
-      slug: "qrs-solution",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams  rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernatur",
-      mainImageUrl: "/images/Rounded Rectangle 1.webp",
-      smallImageUrl: "/images/Rectangle 5.webp",
-      layout: "left",
-      tag: "QRS Solution",
-    },
-    {
-      id: 2,
-      title: "Design & Engineering",
-      subtitle: "Exterior Signage",
-      slug: "exterior-signage",
-      description:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed.",
-      mainImageUrl: "/images/Rectangle 8.webp",
-      smallImageUrl: "/images/Rectangle 9.webp",
-      layout: "right",
-      tag: "Exterior Signage",
-    },
-    {
-      id: 3,
-      title: "Design & Engineering",
-      subtitle: "Interior Signage",
-      slug: "interior-signage",
-      description:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed.",
-      mainImageUrl: "/images/Rectangle 77.webp",
-      smallImageUrl: "/images/Rectangle 20.webp",
-      layout: "left",
-      tag: "Interior Signage",
-    },
-    {
-      id: 4,
-      title: "Design & Engineering",
-      subtitle: "Architectural Elements",
-      slug: "architectural-elements",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 17.webp",
-      smallImageUrl: "/images/Rectangle 18.webp",
-      layout: "right",
-      tag: "Architectural Elements",
-    },
-    {
-      id: 5,
-      title: "Design & Engineering",
-      subtitle: "ADA Solution ",
-      slug: "ada-solution",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 23.webp",
-      smallImageUrl: "/images/Rectangle 24.webp",
-      layout: "left",
-      tag: "ADA Solution",
-    },
-    {
-      id: 6,
-      title: "Design & Engineering",
-      subtitle: "Lighting Solutions",
-      slug: "lighting-solutions",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 27.webp",
-      smallImageUrl: "/images/Rectangle 28.webp",
-      layout: "right",
-      tag: "Lighting Solutions",
-    },
-    {
-      id: 7,
-      title: "Design & Engineering",
-      subtitle: "Wayfinding Signs",
-      slug: "wayfinding-signs",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 35.webp",
-      smallImageUrl: "/images/Rectangle 36.webp",
-      layout: "left",
-      tag: "Wayfinding Signs",
-    },
-    {
-      id: 8,
-      title: "Design & Engineering",
-      subtitle: "Fleet Branding",
-      slug: "fleet-branding",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 31.webp",
-      smallImageUrl: "/images/Rectangle 32.webp",
-      layout: "right",
-      tag: "Fleet Branding",
-    },
-    {
-      id: 9,
-      title: "Design & Engineering",
-      subtitle: "Large Format Printing",
-      slug: "large-format-printing",
-      description:
-        "Perspiciatis unde aut omnis iste natus sit voluptatem accusantium doloremu laudantium quia totams rem aperiam eaque ipsa quae aib inventore veritatis et quasi ars beatae vitae a dicta sunt explicuabs nemo ipsam voluptatem volusaspernaturw aut odit aut fugit, sed. ",
-      mainImageUrl: "/images/Rectangle 38.webp",
-      smallImageUrl: "/images/Rectangle 39.webp",
-      layout: "left",
-      tag: "Large Format Printing",
-    },
-  ];
+  const ProductBlocks = [...productList];
 
   return (
     <section className="bg-white px-8 sm:px-10 overflow-hidden">
