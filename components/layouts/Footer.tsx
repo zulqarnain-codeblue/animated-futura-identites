@@ -139,7 +139,7 @@ const Footer = () => {
       {/* Subtle Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-theme/5 via-transparent to-transparent opacity-50" />
 
-      <div className="max-w-[1450px] mx-auto px-8 py-16 relative z-10">
+      <div className="max-w-[1450px] mx-auto px-8 py-9 sm:py-16 relative z-10">
         {/* Logo + Social */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -292,8 +292,8 @@ const Footer = () => {
           viewport={{ once: true }}
           className="border-t border-gray-800 pt-12"
         >
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-            <h3 className="text-white text-2xl md:text-3xl font-semibold">
+          <div className="flex flex-col lg:flex-row justify-between sm:items-center gap-3 sm:gap-8">
+            <h3 className="text-white text-lg sm:text-2xl md:text-3xl font-semibold">
               Subscribe To Our Newsletter
             </h3>
             <form
@@ -302,7 +302,7 @@ const Footer = () => {
             >
               <div className="relative flex-1 lg:min-w-[400px]">
                 <MdEmail
-                  className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 text-gray-400"
                   size={20}
                 />
                 <input
@@ -310,7 +310,7 @@ const Footer = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email"
-                  className="w-full pl-14 pr-4 py-4 text-black focus:outline-none"
+                  className="w-full pl-9 sm:pl-14 pr-4 py-2 sm:py-4 text-black focus:outline-none"
                   required
                 />
               </div>
@@ -318,7 +318,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="bg-theme px-10 py-4 text-white font-bold flex items-center gap-2 cursor-pointer"
+                className="bg-theme px-3 sm:px-10 sm:py-4 text-white font-bold flex items-center gap-2 cursor-pointer"
               >
                 Submit <IoIosSend size={22} />
               </motion.button>

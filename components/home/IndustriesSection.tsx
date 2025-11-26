@@ -157,9 +157,9 @@ function IndustryCard({ industry }: { industry: (typeof industries)[0] }) {
       }}
       whileTap={{ scale: 0.98 }}
       className={`
-        relative p-8 sm:py-12 text-center cursor-pointer 
+        relative px-6 sm:px-8 py-8 sm:py-12 text-center cursor-pointer 
         bg-[#1a1a1ad3] backdrop-blur-sm transition-colors duration-300
-        border-2 border-transparent
+        border-2 border-transparent aspect-square sm:aspect-auto flex justify-center items-center flex-col
         group
       `}
     >
@@ -185,7 +185,7 @@ function IndustryCard({ industry }: { industry: (typeof industries)[0] }) {
       </motion.div>
 
       {/* TEXT */}
-      <h3 className="font-semibold text-white/70 group-hover:text-white transition-colors">
+      <h3 className="sm:text-lg text-sm font-semibold text-white/70 group-hover:text-white transition-colors">
         {industry.name}
       </h3>
     </motion.div>

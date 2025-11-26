@@ -540,19 +540,19 @@ export default function ComprehensiveBrandingSection() {
                 <div className="ml-auto mr-16 mt-10 md:mt-14 relative max-w-xs">
                   <div className="absolute -top-1/6 right-0 -translate-y-full flex flex-col items-center">
                     <motion.div
-                      className="w-5 aspect-square bg-theme rounded-full relative"
+                      className="w-4 sm:w-5 aspect-square bg-theme rounded-full relative"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
                       <motion.div
-                        className="absolute w-15 h-15 bg-theme/20 rounded-full"
+                        className="absolute w-12 sm:w-15 h-12 sm:h-15 bg-theme/20 rounded-full"
                         style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
                         animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
                     </motion.div>
                     <motion.div
-                      className="w-0.5 bg-theme"
+                      className="w-0.5 bg-theme max-h-20 sm:max-h-36"
                       initial={{ height: 0 }}
                       animate={isInView ? { height: "9rem" } : { height: 0 }}
                       transition={{ duration: 0.8, ease, delay: 0.4 }}

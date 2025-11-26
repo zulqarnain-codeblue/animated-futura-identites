@@ -435,7 +435,7 @@ const ServicesSection: React.FC = () => {
           <H2 className="text-theme">Our Services</H2>
         </RevealText>
       </div>
-      <div className="mb-10">
+      <div className="sm:mb-10">
         {serviceBlocks.map((block, index) => (
           <ServiceBlock key={block.id} content={block} index={index} />
         ))}
